@@ -32,14 +32,14 @@
 </head>
 <body>
 
-  <h1>Reporte de [responsable]</h1>
+  <h1>Reporte de <<[responsable]>></h1>
 
-  <p><strong>Fecha:</strong>"Fecha"</p>
-  <p><strong>Local:</strong>"Id_local"</p>
+  <p><strong>Fecha:</strong><<[Fecha]>></p>
+  <p><strong>Local:</strong><<[Id_local]>></p>
 
   <div class="section">
     <h2>Responsable</h2>
-    <p>[responsable]</p>
+    <p><<[responsable]>></p>
   </div>
 
   <div class="section">
@@ -51,13 +51,12 @@
       </tr>
       <<Start: [ListaActividades]>>
       <tr>
-        <td>[SOD_ADICIONAL]</td>
-        <td>[TOTAL_PARTICIPACIÓN_SHARE_OF_DISPLAY]</td>
+        <td><<[SOD_ADICIONAL]>></td>
+        <td><<[TOTAL_PARTICIPACIÓN_SHARE_OF_DISPLAY]>></td>
 
       </tr>
       <<End>>
     </table>
   </div>
-
 </body>
 </html>
