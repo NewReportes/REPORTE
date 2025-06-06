@@ -15,6 +15,7 @@
             var fecha = obtenerParametro('fecha');
 	    var local = obtenerParametro('local');
 	    var responsable = obtenerParametro('responsable');
+	    var Adicional = obtenerParametro('Adicional');
             var resumen1 = obtenerParametro('resumen1');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
@@ -24,8 +25,9 @@
             window.onload = function() {
                 document.getElementById('id_encuesta').innerHTML = id_boleta;
                 document.getElementById('fecha').innerHTML = fecha;
+		document.getElementById('Adicional').innerHTML = Adicional;
 		document.getElementById('hora').innerHTML = hora;
-		document.getElementById('responsable').innerHTML = vendedor;
+		document.getElementById('responsable').innerHTML = responsable;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
 		   lineasResumen1.forEach(function(linea1) {
@@ -76,17 +78,17 @@
 <ph class="responsable" style="text-align: center;" id="responsable"></td>
   </div>
 
-  <div class="section">
+    <div class="section">
     <h2>Detalles de Actividades</h2>
     <table>
       <tr>
         <th class="Adicional">Adicional</th>
-        <th class="Total Participacion">Total Participacion</th>
+        <th class="Adicional">Adicional</th>
     
       </tr>
       <tr>
         <td class="cantidad" style="text-align: center;" id="resumen1"></td>
-        <td class="total" style="text-align: center;" id="total"></td>
+        <td class="Adicional" style="text-align: center;" id="Adicional"></td>
 
       </tr>
     </table>
