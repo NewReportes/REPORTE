@@ -15,7 +15,7 @@
             var fecha = obtenerParametro('fecha');
 	    var local = obtenerParametro('local');
 	    var responsable = obtenerParametro('responsable');
-	    var Adicional = obtenerParametro('Adicional');
+	    var adicional = obtenerParametro('adicional');
             var resumen1 = obtenerParametro('resumen1');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
@@ -25,7 +25,7 @@
             window.onload = function() {
                 document.getElementById('id_encuesta').innerHTML = id_boleta;
                 document.getElementById('fecha').innerHTML = fecha;
-		document.getElementById('Adicional').innerHTML = Adicional;
+		document.getElementById('adicional').innerHTML = adicional;
 		document.getElementById('hora').innerHTML = hora;
 		document.getElementById('responsable').innerHTML = responsable;
 		    
