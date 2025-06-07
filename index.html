@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<script>
+	
+	<script>
 // Función para obtener parámetros de la URl
             function obtenerParametro(nombre) {
                 nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -13,10 +13,10 @@
 // Obtener los parámetros de la URL
             var id_encuesta = obtenerParametro('id_encuesta');
             var fecha = obtenerParametro('fecha');
-	    var local = obtenerParametro('local');
 	    var responsable = obtenerParametro('responsable');
-	    var adicional = obtenerParametro('adicional');
+	    var local = obtenerParametro('local');
             var resumen1 = obtenerParametro('resumen1');
+	    var adicional = obtenerParametro('adicional');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
 	    var lineasResumen1 = resumen1.split('\n');
@@ -25,9 +25,9 @@
             window.onload = function() {
                 document.getElementById('id_encuesta').innerHTML = id_encuesta;
                 document.getElementById('fecha').innerHTML = fecha;
-		document.getElementById('adicional').innerHTML = adicional;
-		document.getElementById('hora').innerHTML = hora;
 		document.getElementById('responsable').innerHTML = responsable;
+		document.getElementById('local').innerHTML = local;
+		document.getElementById('adicional').innerHTML = adicional;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
 		   lineasResumen1.forEach(function(linea1) {
@@ -35,61 +35,50 @@
                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                    parrafo.innerHTML = linea1;
                    document.getElementById('resumen1').appendChild(parrafo);});
-};
 
+            };
         </script>
-</head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      color: #333;
-    }
-    h1 {
-      color: #2a8dd4;
-      border-bottom: 2px solid #2a8dd4;
-      padding-bottom: 5px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f0f0f0;
-    }
-    .section {
-      margin-top: 30px;
-    }
-  </style>
+    </head>
 <body>
+<title>Imprime Ticket</title>
+     <link rel="stylesheet" href="style.css">
 
-  <hp class="responsable" style="text-align: center;" id="responsable"></hp>
+	<div class="ticket">
+           <div class="centrado"><img src="./logo.jpg" alt="Logotipo"></div>
+           <b><p class="centrado" style="font-size:24px; margin-top:0; margin-bottom:0;">AQUÍ NOMBRE FICTICIO</p></b>
+           <p class="centrado" style="font-size:12px; margin-top:0; margin-bottom:0;">
+           <br>DIRECCIÓN N°, COMUNA
+           <br>REGIÓN DE UBICACION, PAÍS.
+	<br>
+	    
+    <tr>
+	<p style="font-size:13px; text-align: center; line-height: 110%;">**************DETALLE DEL PEDIDO**************</p>
+    </tr>
+<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fecha">FECHA</th>
+                        <th class="local">LOCAL/th>
+                        <th class="responsable" style="text-align: right;">RESPONSABLE</th>
+        
+                    </tr>
+                </thead></table>
+<!--va detalle...-->	
+         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
+	     <tbody>
+		<tr>
+                        <td class="fecha" style="text-align: center; line-height: 22%;" id="resumen1"></td>
+                        <td  class="local" style="line-height: 22%;" id="resumen2"></td>
+                        <td class="responsable" style="text-align: right; line-height: 22%;" id="resumen3"></td>
 
-  <p class="fecha" style="text-align: center;" id="fecha"></td>
-  <p class="local" style="text-align: center;" id="local"></td>
+		</tr>
+             </tbody>
+	</table><br>
 
-  <div class="section">
-<ph class="responsable" style="text-align: center;" id="responsable"></td>
-  </div>
-
-    <div class="section">
-    <h2>Detalles de Actividades</h2>
-    <table>
-      <tr>
-        <th class="adicional">Categoria</th>
+<p class="responsable"><b>RESPOSNABLE: </b><span class="responsable" style="text-align: left;"</span></p>
     
-      </tr>
-      <tr>
-        <td class="adicional" style="text-align: center;" id="resumen1"></td>
+        </div>
+    </body>
+<button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
 
-      </tr>
-    </table>
-  </div>
-</body>
 </html>
