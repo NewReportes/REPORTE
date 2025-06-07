@@ -16,7 +16,6 @@
 	    var responsable = obtenerParametro('responsable');
 	    var local = obtenerParametro('local');
             var resumen1 = obtenerParametro('resumen1');
-	    var adicional = obtenerParametro('adicional');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
 	    var lineasResumen1 = resumen1.split('\n');
@@ -27,7 +26,6 @@
                 document.getElementById('fecha').innerHTML = fecha;
 		document.getElementById('responsable').innerHTML = responsable;
 		document.getElementById('local').innerHTML = local;
-		document.getElementById('adicional').innerHTML = adicional;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
 		   lineasResumen1.forEach(function(linea1) {
@@ -41,14 +39,10 @@
     </head>
 <body>
 <title>Imprime Ticket</title>
-     <link rel="stylesheet" href="style.css">
-
 	<div class="ticket">
-           <div class="centrado"><img src="./logo.jpg" alt="Logotipo"></div>
            <b><p class="centrado" style="font-size:24px; margin-top:0; margin-bottom:0;">AQUÍ NOMBRE FICTICIO</p></b>
            <p class="centrado" style="font-size:12px; margin-top:0; margin-bottom:0;">
-           <br>DIRECCIÓN N°, COMUNA
-           <br>REGIÓN DE UBICACION, PAÍS.
+
 	<br>
 	    
     <tr>
@@ -68,8 +62,6 @@
 	     <tbody>
 		<tr>
                         <td class="fecha" style="text-align: center; line-height: 22%;" id="resumen1"></td>
-                        <td  class="local" style="line-height: 22%;" id="resumen2"></td>
-                        <td class="responsable" style="text-align: right; line-height: 22%;" id="resumen3"></td>
 
 		</tr>
              </tbody>
