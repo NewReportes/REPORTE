@@ -1,0 +1,77 @@
+* {
+    font-size: 11px;
+    font-family: 'Calibri';
+}
+
+td,
+th,
+tr,
+table {
+    width: 300px;
+    border-collapse: collapse;
+}  
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+td.descripcion,
+th.descripcion {
+    width: 160px;
+    max-width: 160px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+td.cantidad,
+th.cantidad {
+    width: 30px;
+    max-width: 30px;
+    word-break: break-all;
+}
+td.preciounit,
+th.preciounit {
+    width: 40px;
+    max-width: 40px;
+    word-break: break-all;
+}
+
+td.precio,
+th.precio {
+    width: 40px;
+    max-width: 40px;
+    word-break: break-all;
+}
+td.hora,
+th.hora {
+    width: 80px;
+    max-width: 80px;
+    word-break: break-all;
+}
+.centrado {
+    text-align: center;
+    align-content: center;
+}
+
+.ticket {
+    width: 300px;
+    max-width: 300px;
+}
+
+img {
+    max-width: 120px;
+    width: 120px;
+}
+hr {
+    height: 1px;
+    border-bottom: 1px;
+}
+
+@media print {
+  .noPrint{
+    display:none;
+  }
+}
+h1{
+  color:#f6f6;
+}
