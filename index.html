@@ -28,26 +28,66 @@
 	document.getElementById("cumplimiento").innerHTML = cumplimiento;};
  </script>
 
-           <b><p class="centrado" style="font-size:18px; margin-top:0; margin-bottom:0;">DETALLE GENERAL</p></b>
-<p>ENCUESTA: <span id="encuesta"></span></p>
-   
-<table>
-	
-<p>TOTAL ACUERDO COMERCIAL</p> 
-<p>CUMPLIMIENTO POR NEGOCIACIÓN</p>
-<p>S. O. D. ADICIONAL</p>
-<p>S. O. D. TOTAL PARTICIPACIÓN</p>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .total {
+      font-weight: bold;
+      background-color: #e6ffe6;
+    }
+    .download-link {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
 
-	</table>
-<table>
-	
-<span id="cantaccomercial"></span>
- <span id="cumplimiento"></span>%</p>
- <span id="adicional"></span></p>
- <span id="totalparticipacion"></span>%</p>
+  <h2>DETALLE GENERAL</h2>
 
-</table>
+  <table>
+    <thead>
 
+      <tr>
+        <th>TOTAL ACUERDO COMERCIAL</th>
+        <th>CUMPLIMIENTO POR NEGOCIACIÓN</th>
+        <th>S. O. D. ADICIONAL</th>
+        <th>S. O. D. TOTAL PARTICIPACIÓN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+ <td id="cantaccomercial"></td>
+ <td id="cumplimiento"></td>%
+ <td id="adicional"></td>
+ <td id="totalparticipacion"></td>%
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Enlace para descargar archivo PDF desde AppSheet -->
+  <a class="download-link" href="https://www.appsheet.com/template/getfile?appName=TuApp-123456&fileName=ventas/venta123.pdf" target="_blank">
+    Descargar PDF de la Venta
+  </a>
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
-
+</body>
 </html>
