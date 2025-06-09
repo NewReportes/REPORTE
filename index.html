@@ -2,13 +2,33 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<title>Reporte Encuesta</title>
-
+<style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #888;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4b084;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        caption {
+            caption-side: top;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</heard>
 <script>
-tr,
-table {
-    width: 300px;
-    border-collapse: collapse;
-}
+
 // Función para obtener parámetros de la URl
             function obtenerParametro(nombre) {
                 nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -32,10 +52,11 @@ table {
 	document.getElementById("totalparticipacion").innerHTML = totalparticipacion;
 	document.getElementById("cumplimiento").innerHTML = cumplimiento;};
  </script>
+<body>
            <b><p class="centrado" style="font-size:18px; margin-top:0; margin-bottom:0;">DETALLE GENERAL</p></b>
 <p>ENCUESTA: <span id="encuesta"></span></p>
 </head>	   
-<table width="100%" border="1" cellpadding="0" cellspacing="0">
+<table>
 <thead>
 <tr>
 <p>TOTAL ACUERDO COMERCIAL</p> 
@@ -44,17 +65,18 @@ table {
 <p>S. O. D. TOTAL PARTICIPACIÓN</p>
 </tr>
 </thead>
-</table>
+<tbody>
 	
-<table width="100%" border="0" cellpadding="0" cellspacing="0";>
 <tr>
 <span id="cantaccomercial"></span>
  <span id="cumplimiento"></span>%</p>
  <span id="adicional"></span></p>
  <span id="totalparticipacion"></span>%</p>
 </tr>
+</tbody>
 </table>
 	
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
 
+</body>
 </html>
