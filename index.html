@@ -2,8 +2,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<title>Reporte Encuesta</title>
-           <b><p class="centrado" style="font-size:24px; margin-top:0; margin-bottom:0;">AQUÍ NOMBRE FICTICIO</p></b>
-           <p class="centrado" style="font-size:12px; margin-top:0; margin-bottom:0;">
+
 <script>
 // Función para obtener parámetros de la URl
             function obtenerParametro(nombre) {
@@ -16,6 +15,7 @@
             var encuesta = obtenerParametro('encuesta');
             var local = obtenerParametro('local');
 	    var fecha = obtenerParametro('fecha');
+	    var adicional = obtenerParametro('adicional');
 	    var cumplimiento = obtenerParametro('cumplimiento');
 
 // Escribir la información en el documento HTML
@@ -23,13 +23,16 @@
 	document.getElementById("encuesta").innerHTML= encuesta;	
 	document.getElementById("local").innerHTML = local;
 	document.getElementById("fecha").innerHTML = fecha;
+	document.getElementById("adicional").innerHTML = adicional;
 	document.getElementById("cumplimiento").innerHTML = cumplimiento;};
  </script>
+           <b><p class="centrado" style="font-size:18px; margin-top:0; margin-bottom:0;">DETALLE GENERAL</p></b>
 </head>	   
 	
 <p>Encuesta: <span id="encuesta"></span></p>
 <p>Local: <span id="local"></span></p>
 <p>Fecha: <span id="fecha"></span></p>
+<p>Adicional: <span id="adicional"></span>%</p>
 <p>Cumplimiento: <span id="cumplimiento"></span>%</p>
 
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
