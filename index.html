@@ -13,6 +13,7 @@
             }
 // Obtener los parámetros de la URL
             var encuesta = obtenerParametro('encuesta');
+	    var responsable = obtenerParametro('responsable');
             var cantaccomercial = obtenerParametro('cantaccomercial');
 	    var adicional = obtenerParametro('adicional');
 	    var totalparticipacion = obtenerParametro('totalparticipacion');
@@ -21,78 +22,58 @@
 
 // Escribir la información en el documento HTML
         window.onload = function() {	
-	document.getElementById("encuesta").innerHTML= encuesta;	
+	document.getElementById("encuesta").innerHTML= encuesta;
+	document.getElementById("responsable").innerHTML= responsable;
 	document.getElementById("cantaccomercial").innerHTML = cantaccomercial;
 	document.getElementById("adicional").innerHTML = adicional;
 	document.getElementById("totalparticipacion").innerHTML = totalparticipacion;
 	document.getElementById("cumplimiento").innerHTML = cumplimiento;};
  </script>
 
-<style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    table {
-      width: 80%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      border: 1px solid #999;
-      padding: 8px 12px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .total {
-      font-weight: bold;
-      background-color: #e6ffe6;
-    }
-    .download-link {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 15px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
-
   <h2>DETALLE GENERAL</h2>
-        <th>TOTAL ACUERDO COMERCIAL:</th><th>TOTAL ACUERDO COMERCIAL</th>
-        <th>CUMPLIMIENTO POR NEGOCIACIÓN:</th><td id="cantaccomercial"></td>
-        <th>S. O. D. ADICIONAL:</th><td id="adicional">%</td>
-        <th>S. O. D. TOTAL PARTICIPACIÓN:</th><td id="totalparticipacion">%</td>
-        <th>CUMPLIMIENTO POR NEGOCIACIÓN:</th><td id="cumplimiento">%</td>
-        <th>S. O. D. ADICIONAL</th>
-        <th>S. O. D. TOTAL PARTICIPACIÓN</th>
-	
-  <table>
-    <thead>
 
-      <tr>
-<th>CATEGORIA</th>
-<th>CUMPLIMIENTO COLGATE</th>
-<th>CUMPLIMIENTO ELMEX</th>
-      </tr>
-    </thead>
-    <tbody>
-<p><span>&lt;&lt;Start: SELECT(share[id_categoria],[id_encuesta]=[id_encuesta]) &gt;&gt;</span></p>  
-      <tr>
-	<td>&lt;&lt;[id_categoria]&lt;&lt;</td>
-      </tr>
-<p><span>&lt;&lt; end &gt;&gt;</span></p>	
-    </tbody>
-  </table>
+<table>
+	  <tr>	
+		  <td class="descripcion" style="text-align: left;">ENCUESTA:  </td><td class="preciounit" style="text-align: left;" id="encuesta"></td> 
+          </tr>
+	  <tr>  
+                  <td class="descripcion" style="text-align: left;">TOTAL ACUERDO COMERCIAL:  </td><td class="descripcion" style="text-align: left;" id="fecha"></td>
+                  <td class="descripcion" style="text-align: right;">CUMPLIMIENTO POR NEGOCIACIÓN:  </td><td class="descripcion" style="text-align: right;" id="cantaccomercial"></td>
+		  <td class="descripcion" style="text-align: right;">S. O. D. ADICIONAL:  </td><td class="descripcion" style="text-align: right;" id="adicional"></td>
+		  <td class="descripcion" style="text-align: right;">S. O. D. TOTAL PARTICIPACIÓN:  </td><td class="descripcion" style="text-align: right;" id="totalparticipacion"></td>	
 
+	  </tr>
+    </table>
+    <tr>
+	<p style="text-align: left; line-height: 0px;">RESPONSABLE:  <span style="text-align: left; line-height: 0px;" id="responsable"></span></p>	
+	<p style="font-size:13px; text-align: center; line-height: 110%;">**************DETALLE DEL PEDIDO**************</p>
+    </tr>
+<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="cantidad">FECHA</th>
+                        <th class="descripcion">CATEGORIA</th>
+                        <th class="preciounit" style="text-align: right;">CUMPLIMIENTO COLGATE</th>
+                        <th class="precio" style="text-align: right;">CUMPLIMIENTO ELMEX</th>
+                    </tr>
+                </thead></table>
+<!--va detalle...-->	
+         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
+	     <tbody>
+		<tr>
+                        <td class="cantidad" style="text-align: center; line-height: 22%;" id="resumen1"></td>
+                        <td  class="descripcion" style="line-height: 22%;" id="resumen2"></td>
+                        <td class="preciounit" style="text-align: right; line-height: 22%;" id="resumen3"></td>
+                        <td class="precio" style="text-align: right; line-height: 22%;" id="resumen4"></td>
+		</tr>
+             </tbody>
+	</table><br>
+
+ 
   <!-- Enlace para descargar archivo PDF desde AppSheet -->
   <a class="download-link" href="https://www.appsheet.com/template/getfile?appName=TuApp-123456&fileName=ventas/venta123.pdf" target="_blank">
     Descargar PDF de la Venta
-  </a>
+  </a><br>
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
 </body>
 </html>
