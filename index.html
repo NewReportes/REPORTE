@@ -13,12 +13,15 @@
             }
 // Obtener los parámetros de la URL
             var encuesta = obtenerParametro('encuesta');
+	    var resumen1 = obtenerParametro('resumen1');
 	    var responsable = obtenerParametro('responsable');
             var cantaccomercial = obtenerParametro('cantaccomercial');
 	    var adicional = obtenerParametro('adicional');
 	    var totalparticipacion = obtenerParametro('totalparticipacion');
 	    var cumplimiento = obtenerParametro('cumplimiento');
 
+// Convertir la cadena resumen en un array separado por saltos de línea
+	    var lineasResumen1 = resumen1.split('\n');
 
 // Escribir la información en el documento HTML
         window.onload = function() {	
@@ -27,8 +30,16 @@
 	document.getElementById("cantaccomercial").innerHTML = cantaccomercial;
 	document.getElementById("adicional").innerHTML = adicional;
 	document.getElementById("totalparticipacion").innerHTML = totalparticipacion;
-	document.getElementById("cumplimiento").innerHTML = cumplimiento;};
- </script>
+	document.getElementById("cumplimiento").innerHTML = cumplimiento;
+
+// Mostrar cada línea del resumen en un párrafo separado
+		   lineasResumen1.forEach(function(linea1) {
+                   var parrafo = document.createElement('p');
+                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                   parrafo.innerHTML = linea1;
+                   document.getElementById('resumen1').appendChild(parrafo);});
+};
+</script>
 
   <h2>DETALLE GENERAL</h2>
 
@@ -62,9 +73,6 @@
 	     <tbody>
 		<tr>
                         <td class="cantidad" style="text-align: center; line-height: 22%;" id="resumen1"></td>
-                        <td  class="descripcion" style="line-height: 22%;" id="resumen2"></td>
-                        <td class="preciounit" style="text-align: right; line-height: 22%;" id="resumen3"></td>
-                        <td class="precio" style="text-align: right; line-height: 22%;" id="resumen4"></td>
 		</tr>
              </tbody>
 	</table><br>
