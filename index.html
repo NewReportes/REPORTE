@@ -1,86 +1,49 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<script>
-// Función para obtener parámetros de la URl
-            function obtenerParametro(nombre) {
-                nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + nombre + '=([^&#]*)');
-                var resultados = regex.exec(location.search);
-                return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ''));
-            }
-        
-// Obtener los parámetros de la URL
-            var id_encuesta = obtenerParametro('id_encuesta');
-            var fecha = obtenerParametro('fecha');
-	    var responsable = obtenerParametro('responsable');
-	    var local = obtenerParametro('local');
-            var resumen1 = obtenerParametro('resumen1');
-	
-// Convertir la cadena resumen en un array separado por saltos de línea
-	    var lineasResumen1 = resumen1.split('\n');
-	
-// Escribir la información en el documento HTML
-            window.onload = function() {
-                document.getElementById('id_encuesta').innerHTML = id_encuesta;
-                document.getElementById('fecha').innerHTML = fecha;
-		document.getElementById('responsable').innerHTML = responsable;
-		document.getElementById('local').innerHTML = local;
-		    
- // Mostrar cada línea del resumen en un párrafo separado
-		   lineasResumen1.forEach(function(linea1) {
-                   var parrafo = document.createElement('p');
-                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1;
-                   document.getElementById('resumen1').appendChild(parrafo);});
-
-            };
-        </script>
-    </head>
-<body>
-<title>Reporte Encuesta</title>
-	<div class="ticket">
+<html>
+	<title>Reporte Encuesta</title>
            <b><p class="centrado" style="font-size:24px; margin-top:0; margin-bottom:0;">AQUÍ NOMBRE FICTICIO</p></b>
            <p class="centrado" style="font-size:12px; margin-top:0; margin-bottom:0;">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    h2 { color: #333; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
 
-	<br>
-	<table>
-	<tr>	
-		  <td class="descripcion" style="text-align: left;">ID:  </td><td class="preciounit" style="text-align: left;" id="id_encuesta"></td> 
-          </tr>
-	  <tr>  
-                  <td class="descripcion" style="text-align: left;">FECHA:  </td><td class="descripcion" style="text-align: left;" id="fecha"></td>  
-	  </tr>
-	<tr>  
-                  <td class="descripcion" style="text-align: right;">RESPONSABLE:  </td><td class="descripcion" style="text-align: right;" id="responsable"></td>	  
-	  </tr>
-    </table>   
+<h2>Reporte de Venta</h2>
+
+<p><strong>Venta ID:</strong> <<[ID_encuesta]>></p>
+<p><strong>Fecha:</strong> <<[Fecha]>></p>
+<p><strong>Responsable:</strong> <<[responsable]>></p>
+
+<h3>Detalle de Productos</h3>
+
+<table>
+  <thead>
     <tr>
-	<p style="font-size:13px; text-align: center; line-height: 110%;">**************DETALLE DEL PEDIDO**************</p>
+      <th>ID</th>
+      <th>Categoría</th>
+      <th>Cumplimiento</th>
     </tr>
-<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th class="cantidad">FECHA</th>
-                        <th class="descripcion">LOCAL</th>
-                        <th class="preciounit" style="text-align: right;">RESPONSABLE</th>
-        
-                    </tr>
-                </thead></table>
-<!--va detalle...-->	
-         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
-	     <tbody>
-		<tr>
-                        <td class="cantidad" style="text-align: center; line-height: 0%" id="resumen1"></td>
+  </thead>
+  <tbody>
+    <<Start:[AGREGAR SHARE OF MARKET CATEGORÍAS]>>
+    <tr>
+      <td><<[id_share]>></td>
+      <td><<[id_categoria]>></td>
+      <td>$<<[CUMPLIMIENTO_COLGATE]>></td>
+    </tr>
+    <<End>>
+  </tbody>
+</table>
 
-		</tr>
-             </tbody>
-	</table><br>
+</body>
 
-<p class="responsable"><b>RESPOSNABLE: </b><span class="responsable" style="text-align: left;"</span></p>
-    
-        </div>
-    </body>
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
 
 </html>
