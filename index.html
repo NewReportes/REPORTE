@@ -4,6 +4,11 @@
 	<title>Reporte Encuesta</title>
 
 <script>
+tr,
+table {
+    width: 300px;
+    border-collapse: collapse;
+}
 // Función para obtener parámetros de la URl
             function obtenerParametro(nombre) {
                 nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -31,17 +36,23 @@
 <p>ENCUESTA: <span id="encuesta"></span></p>
 </head>	   
 <table width="100%" border="1" cellpadding="0" cellspacing="0">
-	
+<thead>
+<tr>
 <p>TOTAL ACUERDO COMERCIAL</p> 
 <p>CUMPLIMIENTO POR NEGOCIACIÓN</p>
 <p>S. O. D. ADICIONAL</p>
 <p>S. O. D. TOTAL PARTICIPACIÓN</p>
+</tr>
+</thead>
 </table>
+	
 <table width="100%" border="0" cellpadding="0" cellspacing="0";>
+<tr>
 <span id="cantaccomercial"></span>
  <span id="cumplimiento"></span>%</p>
  <span id="adicional"></span></p>
  <span id="totalparticipacion"></span>%</p>
+</tr>
 </table>
 	
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
