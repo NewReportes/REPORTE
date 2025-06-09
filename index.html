@@ -26,22 +26,23 @@
 <table>
   <thead>
     <tr>
-      <th>ID</th>
       <th>Categoría</th>
       <th>Cumplimiento</th>
+      <th>Elmex</th>
     </tr>
   </thead>
   <tbody>
-    <<Start:[AGREGAR SHARE OF MARKET CATEGORÍAS]>>
-    <tr>
-      <td>&lt;&lt;[ID_Share]&gt;&gt</td>
-      <td>&lt;&lt;[ID_categoria]&gt;&gt</td>
-      <td>&lt;&lt;[CUMPLIMIENTO_COLGATE]&gt;&gt</td>
-    </tr>
+				<p><span>&lt;&lt;Start: SELECT(share[id_share],[id_encuesta]=[id_encuesta]) &gt;&gt;</span></p>
+					<tr>
+						<td><a class="cut" style="Display: Block; overflow:hidden; max-height:12px;" align="left">-</a>&lt;&lt;[id_categoria]&gt;&gt;</td>
+						<td><span></span></td>
+				        <td><span>&lt;&lt;[cumplimiento_colgate]&gt;&gt;</span></td>
+						<td><span>&lt;&lt;[Ccumplimiento_elemx]&gt;&gt;</span></td>
+					</tr>
+				<p><span>&lt;&lt; end &gt;&gt;</span></p>
     <<End>>
   </tbody>
 </table>
-
 </body>
 
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
