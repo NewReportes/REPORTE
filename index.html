@@ -15,7 +15,7 @@
             var encuesta = obtenerParametro('encuesta');
             var local = obtenerParametro('local');
 	    var fecha = obtenerParametro('fecha');
-	    var adicional = obtenerParametro('adicional');
+	    var totalparticipacion = obtenerParametro('totalparticipacion');
 	    var cumplimiento = obtenerParametro('cumplimiento');
 
 // Escribir la información en el documento HTML
@@ -23,16 +23,16 @@
 	document.getElementById("encuesta").innerHTML= encuesta;	
 	document.getElementById("local").innerHTML = local;
 	document.getElementById("fecha").innerHTML = fecha;
-	document.getElementById("adicional").innerHTML = adicional;
+	document.getElementById("totalparticipacion").innerHTML = totalparticipacion;
 	document.getElementById("cumplimiento").innerHTML = cumplimiento;};
  </script>
            <b><p class="centrado" style="font-size:18px; margin-top:0; margin-bottom:0;">DETALLE GENERAL</p></b>
 </head>	   
-<p>encuesta: <span id="encuesta"></span></p>
-<p>Local: <span id="local"></span></p>
-<p>Fecha: <span id="fecha"></span></p>
-<p>Adicional: <span id="adicional"></span>%</p>
-<p>Cumplimiento: <span id="cumplimiento"></span>%</p>
+<p>ENCUESTA: <span id="encuesta"></span></p>
+<p>LOCAL: <span id="local"></span></p>
+<p>FECHA: <span id="fecha"></span></p>
+<p>S. O. D. TOTAL PARTICIPACIÓN: <span id="totalparticipacion"></span>%</p>
+<p>CUMPLIMIENTO POR NEGOCIACIÓN: <span id="cumplimiento"></span>%</p>
 
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
 
