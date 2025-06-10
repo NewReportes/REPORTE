@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
-	<title>Reporte Encuesta</title>
-<script>
-
+	<script>
 // Función para obtener parámetros de la URl
             function obtenerParametro(nombre) {
                 nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -11,85 +9,97 @@
                 var resultados = regex.exec(location.search);
                 return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ''));
             }
+        
 // Obtener los parámetros de la URL
             var encuesta = obtenerParametro('encuesta');
-	    var resumen1 = obtenerParametro('resumen1');
-	    var responsable = obtenerParametro('responsable');
-            var cantaccomercial = obtenerParametro('cantaccomercial');
+            var responsable = obtenerParametro('responsable');
+	    var cantaccomercial = obtenerParametro('cantaccomercial');
+	    var cumplimiento = obtenerParametro('cumplimiento');
+            var resumen1 = obtenerParametro('resumen1');
 	    var adicional = obtenerParametro('adicional');
 	    var totalparticipacion = obtenerParametro('totalparticipacion');
-	    var cumplimiento = obtenerParametro('cumplimiento');
-
+	
 // Convertir la cadena resumen en un array separado por saltos de línea
 	    var lineasResumen1 = resumen1.split('\n');
-
+	
 // Escribir la información en el documento HTML
-        window.onload = function() {	
-	document.getElementById("encuesta").innerHTML= encuesta;
-	document.getElementById("responsable").innerHTML= responsable;
-	document.getElementById("cantaccomercial").innerHTML = cantaccomercial;
-	document.getElementById("adicional").innerHTML = adicional;
-	document.getElementById("totalparticipacion").innerHTML = totalparticipacion;
-	document.getElementById("cumplimiento").innerHTML = cumplimiento;
-
-// Mostrar cada línea del resumen en un párrafo separado
+            window.onload = function() {
+                document.getElementById('encuesta').innerHTML = encuesta;
+                document.getElementById('responsable').innerHTML = responsable;
+		document.getElementById('cantaccomercial').innerHTML = cantaccomercial;
+		document.getElementById('cumplimiento').innerHTML = cumplimiento;
+		document.getElementById('adicional').innerHTML = adicional;
+		document.getElementById('totalparticipacion').innerHTML = totalparticipacion;
+		    
+ // Mostrar cada línea del resumen en un párrafo separado
 		   lineasResumen1.forEach(function(linea1) {
                    var parrafo = document.createElement('p');
                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                    parrafo.innerHTML = linea1;
                    document.getElementById('resumen1').appendChild(parrafo);});
-};
 
-</script>
-</head>
-<body>	
-  <h2>RESUMEN GENERAL</h2>
+		    lineasResumen2.forEach(function(linea2) {
+                    var parrafo = document.createElement('p');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.innerHTML = linea2;
+		    document.getElementById('resumen2').appendChild(parrafo);});
+			    
+		    lineasResumen3.forEach(function(linea3) {
+                    var parrafo = document.createElement('p');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.innerHTML = linea3;
+                    document.getElementById('resumen3').appendChild(parrafo);});
+		    
+		    lineasResumen4.forEach(function(linea4) {
+                    var parrafo = document.createElement('p');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.innerHTML = linea4;
+                    document.getElementById('resumen4').appendChild(parrafo);});
+            };
+        </script>
+    </head>
+<body>
+<title>Imprime Ticket</title>
+     <link rel="stylesheet" href="style.css">
 
-
+	<div class="ticket">
+           <div class="centrado"><img src="./logo.jpg" alt="Logotipo"></div>
+           <b><p class="centrado" style="font-size:24px; margin-top:0; margin-bottom:0;">AQUÍ NOMBRE FICTICIO</p></b>
+	    
+	<table>
 	  <tr>	
-		  <td class="descripcion" style="text-align: left;">ENCUESTA:  </td><td class="preciounit" style="text-align: left;" id="encuesta"></td> 
+		  <td class="descripcion" style="text-align: left;">BOLETA N°:  </td><td class="preciounit" style="text-align: left;" id="encuesta"></td> 
           </tr>
-<table border="1" cellpadding="4" cellspacing="0">
-	<head>
-	  <tr>  
-                  <th>TOTAL ACUERDO COMERCIAL</th>
-		  <th>CUMPLIMIENTO POR NEGOCIACIÓN</th>
-		  <th>S. O. D. ADICIONAL</th>
-		  <th>S. O. D. TOTAL PARTICIPACIÓN</th>
-	</tr>
-</head>
-	<tbody>
-	<tr>
-		  <td id="cantaccomercial"></td>
-                  <td id="cumplimiento"></td>
-		  <td id="adicional"></td>
-		  <td id="totalparticipacion"></td>	
 
-	  </tr>
-	</tbody>
     </table>
     <tr>
-	<p style="text-align: left; line-height: 0px;">RESPONSABLE:  <span style="text-align: left; line-height: 0px;" id="responsable"></span></p>	
+	<p style="text-align: left; line-height: 0px;">VENDEDOR:  <span style="text-align: left; line-height: 0px;" id="responsable"></span></p>	
 	<p style="font-size:13px; text-align: center; line-height: 110%;">**************DETALLE DEL PEDIDO**************</p>
     </tr>
-<!--revisar cod--> <table border="1" cellpadding="4" cellspacing="0">
+<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>FECHA</th>
-                        <th>CATEGORIA</th>
-                        <th>CUMPLIMIENTO COLGATE</th>
-                        <th>CUMPLIMIENTO ELMEX</th>
+                        <th class="cantidad">CANT</th>
+                        <th class="descripcion">DESCRIPCION</th>
+                        <th class="preciounit" style="text-align: right;">V. UNIT</th>
+                        <th class="precio" style="text-align: right;">TOTAL</th>
                     </tr>
-                </thead>
+                </thead></table>
 <!--va detalle...-->	
+         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
 	     <tbody>
 		<tr>
-                        <td style="text-align: center;" id="resumen1"></td>
+                        <td class="cantidad" style="text-align: center; line-height: 22%;" id="resumen1"></td>
+
 		</tr>
              </tbody>
-	</table>
-</body>
- 
+	</table><br>
+
+  <p class="centrado">¡¡GRACIAS POR SU VISITA!!
+                <br>App. Ticket</p>
+        </div>
+    </body>
+
   <!-- Enlace para descargar archivo PDF desde AppSheet -->
   <a class="download-link" href="https://www.appsheet.com/template/getfile?appName=TuApp-123456&fileName=ventas/venta123.pdf" target="_blank">
     Descargar PDF de la Venta
