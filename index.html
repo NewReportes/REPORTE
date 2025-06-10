@@ -42,17 +42,24 @@
 </script>
 </head>
 <body>	
-  <h2>DETALLE GENERAL</h2>
+  <h2>RESUMEN GENERAL</h2>
 
-<table>
+
 	  <tr>	
 		  <td class="descripcion" style="text-align: left;">ENCUESTA:  </td><td class="preciounit" style="text-align: left;" id="encuesta"></td> 
           </tr>
+<table width="100%" border="1" cellpadding="0" cellspacing="0">
 	  <tr>  
-                  <td class="descripcion" style="text-align: left;">TOTAL ACUERDO COMERCIAL:  </td><td class="descripcion" style="text-align: left;" id="fecha"></td>
-                  <td class="descripcion" style="text-align: right;">CUMPLIMIENTO POR NEGOCIACIÓN:  </td><td class="descripcion" style="text-align: right;" id="cantaccomercial"></td>
-		  <td class="descripcion" style="text-align: right;">S. O. D. ADICIONAL:  </td><td class="descripcion" style="text-align: right;" id="adicional"></td>
-		  <td class="descripcion" style="text-align: right;">S. O. D. TOTAL PARTICIPACIÓN:  </td><td class="descripcion" style="text-align: right;" id="totalparticipacion"></td>	
+                  <td class="descripcion">TOTAL ACUERDO COMERCIAL</td>
+		  <td class="descripcion">CUMPLIMIENTO POR NEGOCIACIÓN</td>
+		  <td class="descripcion">S. O. D. ADICIONAL</td>
+		  <td class="descripcion">S. O. D. TOTAL PARTICIPACIÓN</td>
+	</tr>
+	<tr>
+		  <td class="descripcion" id="cantaccomercial"></td>
+                  <td class="descripcion" id="cumplimiento"></td>
+		  <td class="descripcion" id="adicional"></td>
+		  <td class="descripcion" id="totalparticipacion"></td>	
 
 	  </tr>
     </table>
@@ -70,7 +77,7 @@
                     </tr>
                 </thead></table>
 <!--va detalle...-->	
-         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
+         <table width="100%" border="1" cellpadding="0" cellspacing="0";>
 	     <tbody>
 		<tr>
                         <td class="descripcion" style="text-align: center;" id="resumen1"></td>
