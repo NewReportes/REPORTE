@@ -1,104 +1,148 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<script>
-// Función para obtener parámetros de la URl
-            function obtenerParametro(nombre) {
-                nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + nombre + '=([^&#]*)');
-                var resultados = regex.exec(location.search);
-                return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ''));
-            }
-
-// Obtener los parámetros de la URL
-            var encuesta = obtenerParametro('encuesta');
-            var responsable = obtenerParametro('responsable');
-	    var cantaccomercial = obtenerParametro('cantaccomercial');
-	    var cumplimiento = obtenerParametro('cumplimiento');
-            var resumen1 = obtenerParametro('resumen1');
-	    var adicional = obtenerParametro('adicional');
-	    var totalparticipacion = obtenerParametro('totalparticipacion');
-	
-// Convertir la cadena resumen en un array separado por saltos de línea
-	    var lineasResumen1 = resumen1.split('\n');
-	
-// Escribir la información en el documento HTML
-            window.onload = function() {
-                document.getElementById('encuesta').innerHTML = encuesta;
-                document.getElementById('responsable').innerHTML = responsable;
-		document.getElementById('cantaccomercial').innerHTML = cantaccomercial;
-		document.getElementById('cumplimiento').innerHTML = cumplimiento;
-		document.getElementById('adicional').innerHTML = adicional;
-		document.getElementById('totalparticipacion').innerHTML = totalparticipacion;
-		    
- // Mostrar cada línea del resumen en un párrafo separado
-		   lineasResumen1.forEach(function(linea1) {
-                   var parrafo = document.createElement('p');
-                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1;
-                   document.getElementById('resumen1').appendChild(parrafo);});
-
-		    lineasResumen2.forEach(function(linea2) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea2;
-		    document.getElementById('resumen2').appendChild(parrafo);});
-			    
-		    lineasResumen3.forEach(function(linea3) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea3;
-                    document.getElementById('resumen3').appendChild(parrafo);});
-		    
-		    lineasResumen4.forEach(function(linea4) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea4;
-                    document.getElementById('resumen4').appendChild(parrafo);});
-            };
-        </script>
-    </head>
+<html>
+<head>
+  <title>Reporte de Venta</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+    .venta-header {
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .venta-info {
+      margin-bottom: 10px;
+    }
+    .detalle-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .detalle-table th, .detalle-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .detalle-table th {
+      background-color: #eee;
+    }
+    .total {
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+    }
+  </style>
+</head>
 <body>
-<title>Reporte encuesta</title>
-     <link rel="stylesheet" href="style.css">
-	    
-	<table>
-	  <tr>	
-		  <td>BOLETA N°:<span id="encuesta"></span></td> 
-          </tr>
+  <div class="container">
+    <div class="venta-header">
+      <h1>Reporte de Venta</h1>
+    </div>
 
+    <div class="venta-info">
+      <strong>ID de Venta:</strong> <span id="venta-id">[ID_encuesta]</span><br>
+      <strong>Fecha:</strong> <span id="venta-fecha">[FECHA]</span><br>
+      <strong>Local:</strong> <span id="venta-cliente">[id_local]</span><br>
+      <strong>Responsable:</strong> <span id="venta-vendedor">[responsable]</span><br>
+    </div>
+
+    <h2>Detalle de Venta</h2>
+    <table class="detalle-table">
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Cumplimiento Colgate</th>
+          <th>Cumplimiento Elmex</th>
+          <th>Cumplimiento Planograma</th>
+        </tr>
+      </thead>
+      <tbody id="detalle-table-body">
+        <!-- Aquí se insertarán las filas del detalle de venta -->
+      </tbody>
     </table>
-    <tr>
-	<p>VENDEDOR: <span id="responsable"></span></p>	
-	<p style="font-size:13px; text-align: center; line-height: 110%;">RESUMEN GENERAL</p>
-    </tr>
-<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>CANT</th>
-                        <th>DESCRIPCION</th>
-                        <th>V. UNIT</th>
-                        <th>TOTAL</th>
-                    </tr>
-                </thead></table>
-<!--va detalle...-->	
-         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
-	     <tbody>
-		<tr>
-                        <td id="resumen1"></td>
-		</tr>
-             </tbody>
-	</table><br>
 
-  <p class="centrado">¡¡GRACIAS POR SU VISITA!!
-                <br>App. Ticket</p>
-        </div>
-    </body>
+    <div class="total">
+      <strong>Diferencia:</strong> <span id="total-final">[DIF+/-PNG]</span>
+    </div>
+  </div>
 
-  <!-- Enlace para descargar archivo PDF desde AppSheet -->
-  <a class="download-link" href="https://www.appsheet.com/template/getfile?appName=TuApp-123456&fileName=ventas/venta123.pdf" target="_blank">
-    Descargar PDF de la Venta
-  </a><br>
-<button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
+  <script>
+    // Función para rellenar la tabla de detalle
+    function agregarDetalle(producto, cantidad, precioUnitario, subtotal) {
+      const tablaBody = document.getElementById("detalle-table-body");
+      const newRow = tablaBody.insertRow();
 
+      const cellProducto = newRow.insertCell();
+      const cellCantidad = newRow.insertCell();
+      const cellPrecio = newRow.insertCell();
+      const cellSubtotal = newRow.insertCell();
+
+      cellProducto.textContent = producto;
+      cellCantidad.textContent = cantidad;
+      cellPrecio.textContent = precioUnitario;
+      cellSubtotal.textContent = subtotal;
+    }
+
+    // Función para cargar los datos desde AppSheet (placeholder)
+    function cargarDatos() {
+      // **IMPORTANTE:**  Este es un placeholder. La forma real de obtener los datos
+      // de AppSheet depende de cómo hayas configurado tu integración y
+      // de cómo AppSheet te permite exportar o acceder a los datos.
+
+      // **OPCIÓN 1: Si puedes generar un archivo JSON desde AppSheet:**
+      // 1. Genera un archivo JSON que contenga la información de la venta
+      //    y el detalle.
+      // 2. Usa la función `fetch` para cargar el archivo JSON:
+      //    fetch('tu_archivo.json')
+      //      .then(response => response.json())
+      //      .then(data => {
+      //        // Llenar el HTML con los datos del JSON (ver más abajo)
+      //      });
+
+      // **OPCIÓN 2: Si AppSheet te permite ejecutar un script que genere este HTML
+      //    directamente:**
+      //   Puedes inyectar los datos directamente en las variables de Javascript
+      //   sin necesidad de fetch.  Por ejemplo:
+      //   const ventaId = "[ID_VENTA]"; // AppSheet reemplaza esto con el valor real
+      //   const ventaFecha = "[FECHA_VENTA]";
+
+      // **EJEMPLO DE CÓMO LLENAR EL HTML CON LOS DATOS (ya sea desde JSON o variables):**
+
+      // Datos de la Venta (reemplaza con tus datos reales)
+      const ventaId = "[ID_encuesta]"; // Reemplazar con tu valor real
+      const ventaFecha = "[FECHA]"; // Reemplazar con tu valor real
+      const ventaCliente = "[id_local]"; // Reemplazar con tu valor real
+      const ventaVendedor = "[responsable]"; // Reemplazar con tu valor real
+
+      // Datos del Detalle (reemplaza con tus datos reales)
+      const detalles = [
+        { producto: "Producto A", cantidad: 2, precioUnitario: 10, subtotal: 20 },
+        { producto: "Producto B", cantidad: 1, precioUnitario: 15, subtotal: 15 },
+        { producto: "Producto C", cantidad: 3, precioUnitario: 5, subtotal: 15 }
+      ];
+
+      // Llenar los datos en el HTML
+      document.getElementById("venta-id").textContent = ventaId;
+      document.getElementById("venta-fecha").textContent = ventaFecha;
+      document.getElementById("venta-cliente").textContent = ventaCliente;
+      document.getElementById("venta-vendedor").textContent = ventaVendedor;
+      document.getElementById("total-final").textContent = ventaTotal;
+
+      // Llenar la tabla de detalle
+      detalles.forEach(item => {
+        agregarDetalle(item.producto, item.cantidad, item.precioUnitario, item.subtotal);
+      });
+    }
+
+    // Cargar los datos al cargar la página
+    window.onload = cargarDatos;
+  </script>
+</body>
 </html>
