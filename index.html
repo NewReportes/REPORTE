@@ -16,21 +16,9 @@
 	    var responsable = obtenerParametro('responsable');
 	    var cumplimiento = obtenerParametro('cumplimiento');
             var resumen1 = obtenerParametro('resumen1');
-	    var resumen2 = obtenerParametro('resumen2');
-	    var resumen3 = obtenerParametro('resumen3');
-	    var resumen4 = obtenerParametro('resumen4');
-            var subtotal = obtenerParametro('subtotal');
-	    var totalneto = obtenerParametro('totalneto');
-	    var iva = obtenerParametro('iva');
-	    var descuento = obtenerParametro('descuento');
-            var total = obtenerParametro('total');
-            var formapago = obtenerParametro('formapago');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
 	    var lineasResumen1 = resumen1.split('\n');
-	    var lineasResumen2 = resumen2.split('\n');
-            var lineasResumen3 = resumen3.split('\n');
-	    var lineasResumen4 = resumen4.split('\n');
 	
 // Escribir la información en el documento HTML
             window.onload = function() {
@@ -38,12 +26,7 @@
                 document.getElementById('fecha').innerHTML = fecha;
 		document.getElementById('responsable').innerHTML = responsable;
 		document.getElementById('cumplimiento').innerHTML = cumplimiento;
-		document.getElementById('subtotal').innerHTML = subtotal;
-		document.getElementById('totalneto').innerHTML = totalneto;
-		document.getElementById('iva').innerHTML = iva;
-		document.getElementById('descuento').innerHTML = descuento;
-                document.getElementById('total').innerHTML = total;
-		document.getElementById('formapago').innerHTML = formapago;
+
 		    
  // Mostrar cada línea del resumen en un párrafo separado
 		   lineasResumen1.forEach(function(linea1) {
@@ -51,30 +34,11 @@
                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                    parrafo.innerHTML = linea1;
                    document.getElementById('resumen1').appendChild(parrafo);});
-
-		    lineasResumen2.forEach(function(linea2) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea2;
-		    document.getElementById('resumen2').appendChild(parrafo);});
-			    
-		    lineasResumen3.forEach(function(linea3) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea3;
-                    document.getElementById('resumen3').appendChild(parrafo);});
-		    
-		    lineasResumen4.forEach(function(linea4) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea4;
-                    document.getElementById('resumen4').appendChild(parrafo);});
             };
         </script>
     </head>
 <body>
 <title>Imprime Ticket</title>
-     <link rel="stylesheet" href="style.css">
 
 	<div class="ticket">
            <div class="centrado"><img src="./logo.jpg" alt="Logotipo"></div>
@@ -107,10 +71,8 @@
          <table width="100%" border="0" cellpadding="0" cellspacing="0";>
 	     <tbody>
 		<tr>
-                        <td class="cantidad" style="text-align: center; line-height: 22%;" id="resumen1"></td>
-                        <td  class="descripcion" style="line-height: 22%;" id="resumen2"></td>
-                        <td class="preciounit" style="text-align: right; line-height: 22%;" id="resumen3"></td>
-                        <td class="precio" style="text-align: right; line-height: 22%;" id="resumen4"></td>
+                        <td class="cantidad" style="text-align: center;" id="resumen1"></td>
+
 		</tr>
              </tbody>
 	</table><br>
