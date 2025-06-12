@@ -81,7 +81,6 @@
     function obtenerFechaDeURL() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get('encuesta');
-      return urlParams.get('cumplimientoac');
     }
 
     // Obtener la fecha del parámetro de la URL
@@ -97,8 +96,8 @@
 
     // Datos de ejemplo (reemplazar con datos reales)
     const datosVenta = {
-      cumplimientoac: [CUMPLIMIENTO_IMPLEMENTACIÓN_A.C.],
-      cantidad: [CANTIDAD_ACUERDO_COMERCIAL],
+      cumplimientoac: 20,
+      cantidad: 43,
       Total: 1200,
       detalle: [
         { idVenta: 1, producto: 'Camiseta', cantidad: 2, precioUnitario: 20, fechaVenta: '2023-10-26' },
@@ -111,9 +110,9 @@
 
 
     // Llenar el resumen de venta
-    document.getElementById('cumplimientoac').textContent = datosVenta.cumplimientoac;
-    document.getElementById('cantidad').textContent = datosVenta.cantidad;
-    document.getElementById('Total').textContent = datosVenta.Total;
+    document.getElementById('cumplimientoac').innerHTML = datosVenta.cumplimientoac;
+    document.getElementById('cantidad').innerHTML = datosVenta.cantidad;
+    document.getElementById('Total').innerHTML = datosVenta.Total;
 
     // Llenar el detalle de venta
     const detalleVentaTabla = document.getElementById('detalleVenta');
