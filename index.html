@@ -1,113 +1,107 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Reporte de Venta</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .total {
-      font-weight: bold;
-    }
-  </style>
-</head>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<script>
+// Función para obtener parámetros de la URl
+            function obtenerParametro(nombre) {
+                nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + nombre + '=([^&#]*)');
+                var resultados = regex.exec(location.search);
+                return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ''));
+            }
+        
+// Obtener los parámetros de la URL
+            var encuesta = obtenerParametro('encuesta');
+            var fecha = obtenerParametro('fecha');
+	          var responsable= obtenerParametro('responsable');
+            var resumen1 = obtenerParametro('resumen1');
+	          var resumen2 = obtenerParametro('resumen2');
+	          var resumen3 = obtenerParametro('resumen3');
+	          var resumen4 = obtenerParametro('resumen4');
+	
+// Convertir la cadena resumen en un array separado por saltos de línea
+	    var lineasResumen1 = resumen1.split('\n');
+	    var lineasResumen2 = resumen2.split('\n');
+      var lineasResumen3 = resumen3.split('\n');
+	    var lineasResumen4 = resumen4.split('\n');
+	
+// Escribir la información en el documento HTML
+            window.onload = function() {
+                document.getElementById('encuesta').innerHTML = encuesta;
+                document.getElementById('fecha').innerHTML = fecha;
+		document.getElementById('responsable').innerHTML = responsable;
+		    
+ // Mostrar cada línea del resumen en un párrafo separado
+		   lineasResumen1.forEach(function(linea1) {
+                   var parrafo = document.createElement('p');
+                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                   parrafo.innerHTML = linea1;
+                   document.getElementById('resumen1').appendChild(parrafo);});
+
+		    lineasResumen2.forEach(function(linea2) {
+                    var parrafo = document.createElement('p');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.innerHTML = linea2;
+		    document.getElementById('resumen2').appendChild(parrafo);});
+			    
+		    lineasResumen3.forEach(function(linea3) {
+                    var parrafo = document.createElement('p');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.innerHTML = linea3;
+                    document.getElementById('resumen3').appendChild(parrafo);});
+		    
+		    lineasResumen4.forEach(function(linea4) {
+                    var parrafo = document.createElement('p');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.innerHTML = linea4;
+                    document.getElementById('resumen4').appendChild(parrafo);});
+            };
+        </script>
+    </head>
 <body>
+<title>Reporte Encuesta</title>
+     <link rel="stylesheet" href="style.css">
 
-  <h1>Reporte de Venta</h1>
+	<div class="ticket">
+           <div class="centrado"><img src="./logo.jpg" alt="Logotipo"></div>
 
-  <p><b>Fecha del Reporte:</b> <<TODAY()>> </p>
+	<table>
+	  <tr>	
+		  <td class="descripcion" style="text-align: left;">encuesta:  </td><td class="preciounit" style="text-align: left;" id="encuesta"></td> 
+          </tr>
+	  <tr>  
+                  <td class="descripcion" style="text-align: left;">FECHA:  </td><td class="descripcion" style="text-align: left;" id="fecha"></td>
+                  <td class="descripcion" style="text-align: right;">RESPONSABLE:  </td><td class="descripcion" style="text-align: right;" id="responsable"></td>	  
+	  </tr>
+    </table>
+    <tr>
+	<p style="font-size:13px; text-align: center; line-height: 110%;">**************RESUMEN GENERAL**************</p>
+    </tr>
+<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="cantidad">CATEGORIA</th>
+                        <th class="descripcion">MARCA</th>
+                        <th class="preciounit" style="text-align: right;">CUMPLIMIENTO COLGATE</th>
+                        <th class="precio" style="text-align: right;">CUMPLIMIENTO ELMEX</th>
+                    </tr>
+                </thead></table>
+<!--va detalle...-->	
+         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
+	     <tbody>
+		<tr>
+                        <td class="cantidad" style="text-align: center; line-height: 22%;" id="resumen1"></td>
+                        <td  class="descripcion" style="line-height: 22%;" id="resumen2"></td>
+                        <td class="preciounit" style="text-align: right; line-height: 22%;" id="resumen3"></td>
+                        <td class="precio" style="text-align: right; line-height: 22%;" id="resumen4"></td>
+		</tr>
+             </tbody>
+	</table><br>
+    
+            <p class="centrado">¡¡GRACIAS POR SU VISITA!!
+                <br>App. Ticket</p>
+        </div>
+    </body>
+<button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
 
-  <h2>Resumen de la Venta</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Total Venta</th>
-        <th>Cantidad de Artículos Vendidos</th>
-        <th>Ganancia Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>&gt;SUM(SELECT(encuesta[CANTIDAD_ACUERDO_COMERCIAL], TRUE))&gt;</td>
-        <td><<SUM(SELECT(share[CANTIDAD_ESPACIO_GANCHOS_COLGATE], TRUE))>></td>
-        <td><<SUM(SELECT(share[CUMPLIMIENTO_ELMEX], TRUE))>></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <h2>Detalle de la Venta</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>ID Venta</th>
-        <th>Fecha Venta</th>
-        <th>Cliente</th>
-        <th>Monto Total</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <<Start: SELECT(encuestas[ID_encuesta], TRUE)>>
-      <tr>
-        <td>&gt;[ID_encuesta]&gt;</td>
-        <td><<[Fecha]>></td>
-        <td><<[responsable]>></td>
-        <td><<[CUMPLIMIENTO_AC]>></td>
-        <td><<[CUMPLIMIENTO_ACUERDO_COMERCIAL]>></td>
-      </tr>
-      <<End>>
-    </tbody>
-  </table>
-
-
-  <h2>Detalle de Artículos Vendidos</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>ID Venta</th>
-        <th>Artículo</th>
-        <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th>Costo Articulo</th>
-        <th>Total Artículo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <<Start: SELECT(share[ID_share], TRUE)>>
-      <tr>
-        <td><<[ID_encuesta]>></td>
-        <td><<[FECHA_ACTUALIZACION]>></td>
-        <td><<[CANTIDAD_ESPACIO_GANCHOS_COLGATE]>></td>
-        <td><<[CANTIDAD_ESPACIO_GANCHOS_HELLO]>></td>
-        <td><<[CANTIDAD_ESPACIO_GANCHOS_ELMEX]>></td>
-        <td><<[TOTAL_UNIVERSO_CATEGORIA]>></td>
-      </tr>
-      <<End>>
-    </tbody>
-  </table>
-
-  <p>Generado por AppSheet</p>
-
-</body>
 </html>
