@@ -46,7 +46,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><<SUM(SELECT(encuesta[CANTIDAD_ACUERDO_COMERCIAL], TRUE))>></td>
+        <td>&gt;SUM(SELECT(encuesta[CANTIDAD_ACUERDO_COMERCIAL], TRUE))&gt;</td>
         <td><<SUM(SELECT(share[CANTIDAD_ESPACIO_GANCHOS_COLGATE], TRUE))>></td>
         <td><<SUM(SELECT(share[CUMPLIMIENTO_ELMEX], TRUE))>></td>
       </tr>
@@ -69,7 +69,7 @@
     <tbody>
       <<Start: SELECT(encuestas[ID_encuesta], TRUE)>>
       <tr>
-        <td><<[ID_encuesta]>></td>
+        <td>&gt;[ID_encuesta]&gt;</td>
         <td><<[Fecha]>></td>
         <td><<[responsable]>></td>
         <td><<[CUMPLIMIENTO_AC]>></td>
