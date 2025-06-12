@@ -5,144 +5,109 @@
   <style>
     body {
       font-family: sans-serif;
+      margin: 20px;
     }
-    .container {
-      width: 80%;
-      margin: 20px auto;
-      border: 1px solid #ccc;
-      padding: 20px;
-    }
-    .venta-header {
-      background-color: #f0f0f0;
-      padding: 10px;
-      margin-bottom: 20px;
+    h1 {
       text-align: center;
     }
-    .venta-info {
-      margin-bottom: 10px;
-    }
-    .detalle-table {
+    table {
       width: 100%;
       border-collapse: collapse;
+      margin-bottom: 20px;
     }
-    .detalle-table th, .detalle-table td {
+    th, td {
       border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
     }
-    .detalle-table th {
-      background-color: #eee;
+    th {
+      background-color: #f2f2f2;
     }
     .total {
       font-weight: bold;
-      text-align: right;
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="venta-header">
-      <h1>Reporte de Venta</h1>
-    </div>
 
-    <div class="venta-info">
-      <strong>ID de Venta:</strong> <span id="venta-id"></span><br>
-      <strong>Fecha:</strong> <span id="venta-fecha"></span><br>
-      <strong>Local:</strong> <span id="venta-cliente"></span><br>
-      <strong>Responsable:</strong> <span id="venta-vendedor"></span><br>
-    </div>
+  <h1>Reporte de Venta</h1>
 
-    <h2>Detalle de Venta</h2>
-    <table class="detalle-table">
-      <thead>
-        <tr>
-          <th>Categoria</th>
-          <th>Cumplimiento Colgate</th>
-          <th>Cumplimiento Elmex</th>
-          <th>Cumplimiento Planograma</th>
-        </tr>
-      </thead>
-      <tbody id="detalle-table-body">
-        <!-- Aquí se insertarán las filas del detalle de venta -->
-      </tbody>
-    </table>
+  <p><b>Fecha del Reporte:</b> <<TODAY()>> </p>
 
-    <div class="total">
-      <strong>Diferencia:</strong> <span id="total-final"></span>
-    </div>
-  </div>
+  <h2>Resumen de la Venta</h2>
 
-  <script>
-    // Función para rellenar la tabla de detalle
-    function agregarDetalle(producto, cantidad, precioUnitario, subtotal) {
-      const tablaBody = document.getElementById("detalle-table-body");
-      const newRow = tablaBody.insertRow();
+  <table>
+    <thead>
+      <tr>
+        <th>Total Venta</th>
+        <th>Cantidad de Artículos Vendidos</th>
+        <th>Ganancia Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><<SUM(SELECT(encuesta[CANTIDAD_ACUERDO_COMERCIAL], TRUE))>></td>
+        <td><<SUM(SELECT(share[CANTIDAD_ESPACIO_GANCHOS_COLGATE], TRUE))>></td>
+        <td><<SUM(SELECT(share[CUMPLIMIENTO_ELMEX], TRUE))>></td>
+      </tr>
+    </tbody>
+  </table>
 
-      const cellProducto = newRow.insertCell();
-      const cellCantidad = newRow.insertCell();
-      const cellPrecio = newRow.insertCell();
-      const cellSubtotal = newRow.insertCell();
 
-      cellProducto.textContent = producto;
-      cellCantidad.textContent = cantidad;
-      cellPrecio.textContent = precioUnitario;
-      cellSubtotal.textContent = subtotal;
-    }
+  <h2>Detalle de la Venta</h2>
 
-    // Función para cargar los datos desde AppSheet (placeholder)
-    function cargarDatos() {
-      // **IMPORTANTE:**  Este es un placeholder. La forma real de obtener los datos
-      // de AppSheet depende de cómo hayas configurado tu integración y
-      // de cómo AppSheet te permite exportar o acceder a los datos.
+  <table>
+    <thead>
+      <tr>
+        <th>ID Venta</th>
+        <th>Fecha Venta</th>
+        <th>Cliente</th>
+        <th>Monto Total</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <<Start: SELECT(encuestas[ID_encuesta], TRUE)>>
+      <tr>
+        <td><<[ID_encuesta]>></td>
+        <td><<[Fecha]>></td>
+        <td><<[responsable]>></td>
+        <td><<[CUMPLIMIENTO_AC]>></td>
+        <td><<[CUMPLIMIENTO_ACUERDO_COMERCIAL]>></td>
+      </tr>
+      <<End>>
+    </tbody>
+  </table>
 
-      // **OPCIÓN 1: Si puedes generar un archivo JSON desde AppSheet:**
-      // 1. Genera un archivo JSON que contenga la información de la venta
-      //    y el detalle.
-      // 2. Usa la función `fetch` para cargar el archivo JSON:
-      //    fetch('tu_archivo.json')
-      //      .then(response => response.json())
-      //      .then(data => {
-      //        // Llenar el HTML con los datos del JSON (ver más abajo)
-      //      });
 
-      // **OPCIÓN 2: Si AppSheet te permite ejecutar un script que genere este HTML
-      //    directamente:**
-      //   Puedes inyectar los datos directamente en las variables de Javascript
-      //   sin necesidad de fetch.  Por ejemplo:
-      //   const ventaId = "[ID_VENTA]"; // AppSheet reemplaza esto con el valor real
-      //   const ventaFecha = "[FECHA_VENTA]";
+  <h2>Detalle de Artículos Vendidos</h2>
 
-      // **EJEMPLO DE CÓMO LLENAR EL HTML CON LOS DATOS (ya sea desde JSON o variables):**
+  <table>
+    <thead>
+      <tr>
+        <th>ID Venta</th>
+        <th>Artículo</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Costo Articulo</th>
+        <th>Total Artículo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <<Start: SELECT(share[ID_share], TRUE)>>
+      <tr>
+        <td><<[ID_encuesta]>></td>
+        <td><<[FECHA_ACTUALIZACION]>></td>
+        <td><<[CANTIDAD_ESPACIO_GANCHOS_COLGATE]>></td>
+        <td><<[CANTIDAD_ESPACIO_GANCHOS_HELLO]>></td>
+        <td><<[CANTIDAD_ESPACIO_GANCHOS_ELMEX]>></td>
+        <td><<[TOTAL_UNIVERSO_CATEGORIA]>></td>
+      </tr>
+      <<End>>
+    </tbody>
+  </table>
 
-      // Datos de la Venta (reemplaza con tus datos reales)
-      const ventaId = &gt;&gt;[ID_encuesta]&gt;&gt; // Reemplazar con tu valor real
-      const ventaFecha = &gt;&gt;[FECHA]&gt;&gt; // Reemplazar con tu valor real
-      const ventaCliente = &gt;&gt;[id_local]&gt;&gt; // Reemplazar con tu valor real
-      const ventaVendedor = &gt;&gt;[responsable]&gt;&gt; // Reemplazar con tu valor real
+  <p>Generado por AppSheet</p>
 
-      // Datos del Detalle (reemplaza con tus datos reales)
-      const detalles = [
-        { producto: "Producto A", cantidad: 2, precioUnitario: 10, subtotal: 20 },
-        { producto: "Producto B", cantidad: 1, precioUnitario: 15, subtotal: 15 },
-        { producto: "Producto C", cantidad: 3, precioUnitario: 5, subtotal: 15 }
-      ];
-
-      // Llenar los datos en el HTML
-      document.getElementById("venta-id").textContent = ventaId;
-      document.getElementById("venta-fecha").textContent = ventaFecha;
-      document.getElementById("venta-cliente").textContent = ventaCliente;
-      document.getElementById("venta-vendedor").textContent = ventaVendedor;
-      document.getElementById("total-final").textContent = ventaTotal;
-
-      // Llenar la tabla de detalle
-      detalles.forEach(item => {
-        agregarDetalle(item.producto, item.cantidad, item.precioUnitario, item.subtotal);
-      });
-    }
-
-    // Cargar los datos al cargar la página
-    window.onload = cargarDatos;
-  </script>
 </body>
 </html>
