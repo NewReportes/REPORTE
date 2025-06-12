@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reporte Encuesta</title>
+  <title>Reporte detalle encuesta</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,11 +33,11 @@
 </head>
 <body>
 
-  <h1>RESUMEN GENERAL</h1>
+  <h1>Logo</h1>
 
   <p><strong>Fecha del Reporte:</strong> <span id="fechaReporte"></span></p>
 
-  <h2>Resumen de Venta</h2>
+  <h2>RESUMEN GENERAL.</h2>
 
   <table>
     <thead>
@@ -110,9 +110,9 @@
 
 
     // Llenar el resumen de venta
-    document.getElementById('cumplimientoac').textContent = datosVenta.totalVentas;
-    document.getElementById('cantidad').textContent = datosVenta.cantidadProductos;
-    document.getElementById('Total').textContent = datosVenta.ingresosTotales;
+    document.getElementById('cumplimientoac').textContent = datosVenta.cumplimientoac;
+    document.getElementById('cantidad').textContent = datosVenta.cantidad;
+    document.getElementById('Total').textContent = datosVenta.Total;
 
     // Llenar el detalle de venta
     const detalleVentaTabla = document.getElementById('detalleVenta');
