@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reporte de Venta</title>
+  <title>Reporte Encuesta</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-  <h1>Reporte de Venta</h1>
+  <h1>RESUMEN GENERAL</h1>
 
   <p><strong>Fecha del Reporte:</strong> <span id="fechaReporte"></span></p>
 
@@ -80,7 +80,7 @@
     // Función para obtener el parámetro 'fecha' de la URL
     function obtenerFechaDeURL() {
       const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('fecha');
+      return urlParams.get('encuesta');
     }
 
     // Obtener la fecha del parámetro de la URL
