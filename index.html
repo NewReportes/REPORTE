@@ -1,81 +1,141 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<script>
-// Función para obtener parámetros de la URl
-            function obtenerParametro(nombre) {
-                nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + nombre + '=([^&#]*)');
-                var resultados = regex.exec(location.search);
-                return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ''));
-            }
-        
-// Obtener los parámetros de la URL
-            var encuesta = obtenerParametro('encuesta');
-            var fecha = obtenerParametro('fecha');
-	    var responsable = obtenerParametro('responsable');
-	    var cumplimiento = obtenerParametro('cumplimiento');
-            var resumen1 = obtenerParametro('resumen1');
-	
-// Convertir la cadena resumen en un array separado por saltos de línea
-	    var lineasResumen1 = resumen1.split('\n');
-	
-// Escribir la información en el documento HTML
-            window.onload = function() {
-                document.getElementById('encuesta').innerHTML = encuesta;
-                document.getElementById('fecha').innerHTML = fecha;
-		document.getElementById('responsable').innerHTML = responsable;
-		document.getElementById('cumplimiento').innerHTML = cumplimiento;
-
-		    
- // Mostrar cada línea del resumen en un párrafo separado
-		   lineasResumen1.forEach(function(linea1) {
-                   var parrafo = document.createElement('p');
-                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1;
-                   document.getElementById('resumen1').appendChild(parrafo);});
-            };
-        </script>
-    </head>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Venta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .total {
+      font-weight: bold;
+      text-align: right;
+    }
+  </style>
+</head>
 <body>
-<title>Reporte Encuesta</title>
- 
-	<table>
-	  <tr>	
-		  <td class="descripcion" style="text-align: left;">ENCUESTA:  </td><td class="preciounit" style="text-align: left;" id="encuesta"></td> 
-          </tr>
-	  <tr>  
-                  <td class="descripcion" style="text-align: left;">FECHA:  </td><td class="descripcion" style="text-align: left;" id="fecha"></td><br>
-		   <td class="descripcion" style="text-align: left;">CUMPLIMIENTO:  </td><td class="descripcion" style="text-align: left;" id="cumplimiento"></td>
-	  </tr>
-    </table>
-    <tr>
-	<p style="text-align: left; line-height: 0px;">RESPONSABLE:  <span style="text-align: left; line-height: 0px;" id="responsable"></span></p>	
-	<p style="font-size:13px; text-align: center;">RESUMEN GENERAL</p>
-    </tr>
-<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th class="cantidad">CANT</th>
-                        <th class="descripcion">DESCRIPCION</th>
-                        <th class="preciounit" style="text-align: right;">V. UNIT</th>
-                        <th class="precio" style="text-align: right;">TOTAL</th>
-                    </tr>
-                </thead></table>
-<!--va detalle...-->	
-         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
-	     <tbody>
-		<tr>
-                        <td style="text-align: center;" id="resumen1"></td>
 
-		</tr>
-             </tbody>
-	</table><br>
-    
-            <p class="centrado">¡¡GRACIAS POR SU VISITA!!
-                <br>App. Ticket</p>
-        </div>
-    </body>
-<button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
+  <h1>Reporte de Venta</h1>
 
+  <p><strong>Fecha del Reporte:</strong> <span id="fechaReporte"></span></p>
+
+  <h2>Resumen de Venta</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Total de Ventas</th>
+        <th>Cantidad de Productos Vendidos</th>
+        <th>Ingresos Totales</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="cumplimientoac"></td>
+        <td id="cantidad"></td>
+        <td id="Total"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Detalle de Venta</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID Encuesta</th>
+        <th>Categoria</th>
+        <th>Cantespcolg</th>
+        <th>CantespElmex</th>
+        <th>cumplimiento</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody id="detalleVenta">
+      <!-- Aquí se insertarán las filas del detalle de venta -->
+    </tbody>
+  </table>
+
+  <p class="total"><strong>Total General:</strong> <span id="totalGeneral"></span></p>
+
+  <script>
+    // Función para obtener el parámetro 'fecha' de la URL
+    function obtenerFechaDeURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('fecha');
+    }
+
+    // Obtener la fecha del parámetro de la URL
+    const fechaParametro = obtenerFechaDeURL();
+
+    // Mostrar la fecha en el reporte (si existe)
+    if (fechaParametro) {
+      document.getElementById('fechaReporte').textContent = fechaParametro;
+    } else {
+      document.getElementById('fechaReporte').textContent = 'No especificada';
+    }
+
+
+    // Datos de ejemplo (reemplazar con datos reales)
+    const datosVenta = {
+      totalVentas: 15,
+      cantidadProductos: 50,
+      ingresosTotales: 1200,
+      detalle: [
+        { idVenta: 1, producto: 'Camiseta', cantidad: 2, precioUnitario: 20, fechaVenta: '2023-10-26' },
+        { idVenta: 2, producto: 'Pantalón', cantidad: 1, precioUnitario: 40, fechaVenta: '2023-10-26' },
+        { idVenta: 3, producto: 'Zapatos', cantidad: 1, precioUnitario: 60, fechaVenta: '2023-10-26' },
+        { idVenta: 4, producto: 'Gorra', cantidad: 3, precioUnitario: 15, fechaVenta: '2023-10-26' },
+        { idVenta: 5, producto: 'Calcetines', cantidad: 5, precioUnitario: 5, fechaVenta: '2023-10-26' },
+      ]
+    };
+
+
+    // Llenar el resumen de venta
+    document.getElementById('cumplimientoac').textContent = datosVenta.totalVentas;
+    document.getElementById('cantidad').textContent = datosVenta.cantidadProductos;
+    document.getElementById('Total').textContent = datosVenta.ingresosTotales;
+
+    // Llenar el detalle de venta
+    const detalleVentaTabla = document.getElementById('detalleVenta');
+    let totalGeneral = 0; // Inicializar el total general
+
+    datosVenta.detalle.forEach(venta => {
+      const subtotal = venta.cantidad * venta.precioUnitario;
+      totalGeneral += subtotal; // Acumular el subtotal al total general
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${venta.idVenta}</td>
+        <td>${venta.producto}</td>
+        <td>${venta.cantidad}</td>
+        <td>${venta.precioUnitario}</td>
+        <td>${subtotal}</td>
+        <td>${venta.fechaVenta}</td>
+      `;
+      detalleVentaTabla.appendChild(row);
+    });
+
+    // Mostrar el total general
+    document.getElementById('totalGeneral').textContent = totalGeneral;
+  </script>
+
+</body>
 </html>
