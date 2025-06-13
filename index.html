@@ -58,8 +58,6 @@
 		    
  // Mostrar cada línea del resumen en un párrafo separado
     datosVenta.detalle.forEach(venta => {
-      const subtotal = venta.cantidad * venta.precioUnitario;
-      totalGeneral += subtotal; // Acumular el subtotal al total general
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${venta.idVenta}</td>
