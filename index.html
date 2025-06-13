@@ -42,8 +42,35 @@
 		document.getElementById('descuento').innerHTML = descuento;
                 document.getElementById('total').innerHTML = total;
 		document.getElementById('formapago').innerHTML = formapago;
+    // Datos de ejemplo (reemplazar con datos reales)
+    const datosVenta = {
+      totalVentas: 15,
+      cantidadProductos: 50,
+      ingresosTotales: 1200,
+      detalle: [
+        { idVenta: fecha, producto: 'Camiseta', cantidad: 2, precioUnitario: 20, fechaVenta: '2023-10-26' },
+        { idVenta: 2, producto: 'Pantalón', cantidad: 1, precioUnitario: 40, fechaVenta: '2023-10-26' },
+        { idVenta: 3, producto: 'Zapatos', cantidad: 1, precioUnitario: 60, fechaVenta: '2023-10-26' },
+        { idVenta: 4, producto: 'Gorra', cantidad: 3, precioUnitario: 15, fechaVenta: '2023-10-26' },
+        { idVenta: 5, producto: 'Calcetines', cantidad: 5, precioUnitario: 5, fechaVenta: '2023-10-26' },
+      ]
+    };
 		    
  // Mostrar cada línea del resumen en un párrafo separado
+    datosVenta.detalle.forEach(venta => {
+      const subtotal = venta.cantidad * venta.precioUnitario;
+      totalGeneral += subtotal; // Acumular el subtotal al total general
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${venta.idVenta}</td>
+        <td>${venta.producto}</td>
+        <td>${venta.cantidad}</td>
+        <td>${venta.precioUnitario}</td>
+        <td>${subtotal}</td>
+        <td>${venta.fechaVenta}</td>
+      `;
+      detalleVentaTabla.appendChild(row);
+    });
 		    
 		   lineasResumen1.forEach(function(linea1) {
                    var parrafo = document.createElement('p');
@@ -89,23 +116,20 @@
 	<p style="text-align: left; line-height: 0px;">RESPONSABLE:  <span style="text-align: left; line-height: 0px;" id="responsable"></span></p>	
 	<p style="font-size:13px; text-align: left;">RESUMEN GENERAL.</p>
     </tr>
-<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
+
+  <table>
+    <thead>
+      <tr>
                         <th>FECHA LEVANT.</th>
                         <th>CATEGORÍAS</th>
                         <th>DIF. +/- PLG.L</th>
                         <th>% COLGATE</th>
-                    </tr>
-</table></thead>
-<!--va detalle...--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
-
-	     <tbody>
-		<tr>
-                        <td style="text-align: center;" id="resumen1"></td>
-		</tr>
-             </tbody>
-	</table><br>
+      </tr>
+    </thead>
+    <tbody id="detalleVenta">
+      <!-- Aquí se insertarán las filas del detalle de venta -->
+    </tbody>
+  </table><br>
     
             <p class="centrado">¡¡GRACIAS POR SU VISITA!!
                 <br>App. Ticket</p>
