@@ -43,8 +43,7 @@
 	    var lineasResumen1 = resumen1.split("\n");
 	    var lineasResumen2 = resumen2.split("\n");
 
-  function convertirResumenAHTML(resumen) {
-    const lineas = resumen.split("\n");
+  function convertirResumenAHTML(resumen1) {
     const contenedor = document.getElementById("resumen1");
     contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar contenido
 
@@ -53,15 +52,7 @@
       p.textContent = linea; // Usa textContent para escapar automáticamente
       contenedor.appendChild(p);
     });
-  }
-
-  // Ejemplo de uso:
-  const resumenOriginal = `Esta es la primera línea del resumen.
-Esta es la segunda línea del resumen, que es un poco más larga.
-Y esta es la tercera y última línea. <script>alert('XSS'); // Intentamos un ataque XSS
-
-  // Convertir el resumen a HTML
-  convertirResumenAHTML(resumenOriginal);
+  };
 
 	
 		
@@ -116,7 +107,7 @@ Y esta es la tercera y última línea. <script>alert('XSS'); // Intentamos un at
 
     <tbody>
    	    <tr>
- 			<td id="resumenOriginal"></td>
+ 			<td id="resumen1"></td>
 		        <td id="resumen2"></td>
 	    </tr>
     </tbody>
