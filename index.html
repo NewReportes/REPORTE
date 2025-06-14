@@ -40,8 +40,8 @@
 	    var resumen2 = obtenerParametro('resumen2');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
-	   // var lineasResumen1 = resumen1.split('\n');
-	 //   var lineasResumen2 = resumen2.split('\n');
+	    var lineasResumen1 = resumen1.split('\n');
+	    var lineasResumen2 = resumen2.split('\n');
 	
 // Escribir la información en el documento HTML
             window.onload = function() {
@@ -58,7 +58,7 @@
 
 		    lineasResumen2.forEach(function(linea2) {
                     var parrafo = document.createElement('p');
-		  //  parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+		    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                     parrafo.innerHTML = linea2;
 		    document.getElementById('resumen2').appendChild(parrafo);});
 
@@ -73,10 +73,10 @@
 	    
 	<table>
 	  <tr>	
-              <td class="descripcion" style="text-align: left;">FECHA:  </td><td class="descripcion" style="text-align: left;" id="fecha"></td>
+              <td style="text-align: left;">FECHA:  </td><td style="text-align: left;" id="fecha"></td>
           </tr>
 	  <tr>  
-                  <td class="descripcion" style="text-align: right;">TOTAL ACUERDO COMERCIAL:  </td><td class="descripcion" style="text-align: right;" id="cantidad"></td>	  
+                  <td style="text-align: left;">TOTAL ACUERDO COMERCIAL:  </td><td style="text-align: left;" id="cantidad"></td>	  
 	  </tr>
     </table>
     <tr>
