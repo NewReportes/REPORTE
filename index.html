@@ -39,7 +39,9 @@
             var resumen1 = obtenerParametro('resumen1');
 	    var resumen2 = obtenerParametro('resumen2');
 	
-
+// Convertir la cadena resumen en un array separado por saltos de línea
+	    var lineasResumen1 = resumen1.split('\n');
+	    var lineasResumen2 = resumen2.split('\n');
 	
 // Escribir la información en el documento HTML
             window.onload = function() {
@@ -48,23 +50,8 @@
 		document.getElementById('responsable').innerHTML = responsable;
 
 // Mostrar cada línea del resumen en un párrafo separado
-var lineasResumen1 = resumen1.split('\n');
-		    
-// Datos de ejemplo (reemplazar con datos reales)
-    const datosVenta = {
-      detalle: [
-        { idVenta: 2, producto: resumen1, cantidad: resumen2, precioUnitario: 20, fechaVenta: '2023-10-26' },
-      ]
-    };
-		    
 
-    // Llenar el detalle de venta
-    const detalleVentaTabla = document.getElementById('detalleVenta');
 
-       datosVenta.detalle.forEach(venta => {
-      const row = document.createElement('tr');
-      row.innerHTML = venta;
-      document.getElementById('resumen1').appendChild(row);});
 };
 
         </script>
@@ -94,11 +81,12 @@ var lineasResumen1 = resumen1.split('\n');
                         <th>CATEGORÍAS</th>
                         <th>DIF. +/- PLG.</th>
                         <th>% COLGATE</th>
-	      		<th>FECHA</th>
       </tr>
     </thead>
-    <tbody id="detalleVenta">
-      <!-- Aquí se insertarán las filas del detalle de venta -->
+    <tbody>
+	    <tr>
+ 			<td id="resumen1"></td>
+	    </tr>
     </tbody>
   </table><br>
     
