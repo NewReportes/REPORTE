@@ -51,14 +51,30 @@
 
 // Mostrar cada línea del resumen en un párrafo separado
 
-   // Llenar el detalle de venta
+// Datos de ejemplo (reemplazar con datos reales)
+    const datosVenta = {
+      detalle: [
+        { idVenta: 1, producto: 'Camiseta', cantidad: 2, precioUnitario: 20, fechaVenta: '2023-10-26' },
+        { idVenta: 2, producto: 'Pantalón', cantidad: 1, precioUnitario: 40, fechaVenta: '2023-10-26' },
+        { idVenta: 3, producto: 'Zapatos', cantidad: 1, precioUnitario: 60, fechaVenta: '2023-10-26' },
+        { idVenta: 4, producto: 'Gorra', cantidad: 3, precioUnitario: 15, fechaVenta: '2023-10-26' },
+        { idVenta: 5, producto: 'Calcetines', cantidad: 5, precioUnitario: 5, fechaVenta: '2023-10-26' },
+      ]
+    };
+
+    // Llenar el detalle de venta
     const detalleVentaTabla = document.getElementById('detalleVenta');
-  		    
-    lineasResumen1.forEach(venta => {
+
+    datosVenta.detalle.forEach(venta => {
+
       const row = document.createElement('tr');
-      row.innerHTML = 
-	<td>id="resumen1"</td>
-	<td>id="resumen2"</td>;
+      row.innerHTML = `
+        <td>${venta.idVenta}</td>
+        <td>${venta.producto}</td>
+        <td>${venta.cantidad}</td>
+        <td>${venta.precioUnitario}</td>
+        <td>${venta.fechaVenta}</td>
+      `;
       detalleVentaTabla.appendChild(row);});
 };
 
