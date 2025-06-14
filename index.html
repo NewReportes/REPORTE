@@ -43,25 +43,23 @@
 	    var lineasResumen1 = resumen1.split("\n");
 	    var lineasResumen2 = resumen2.split("\n");
 
-    const contenedor = document.getElementById("resumen1");
-    contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar contenido
+	
+// Escribir la información en el documento HTML
+            window.onload = function() {
+                  document.getElementById('fecha').innerHTML = fecha;
+		document.getElementById('cantidad').innerHTML = cantidad;
+		document.getElementById('responsable').innerHTML = responsable;
+		document.getElementById('resumen1').innerHTML = resumen1;
+		    
+// Mostrar cada línea del resumen en un párrafo separado
+      contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar contenido
 
     lineasResumen1.forEach(function(linea1) {
       const p = document.createElement("p");
       p.textContent = linea1; // Usa textContent para escapar automáticamente
       contenedor.appendChild(p);
     });
-
-
-	
-		
-// Escribir la información en el documento HTML
-            window.onload = function() {
-                  document.getElementById('fecha').innerHTML = fecha;
-		document.getElementById('cantidad').innerHTML = cantidad;
-		document.getElementById('responsable').innerHTML = responsable;
-
-// Mostrar cada línea del resumen en un párrafo separado
+		    
 		   //lineasResumen1.forEach(function(linea1) {
                   // var parrafo = document.createElement('tr');
 		  // parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
