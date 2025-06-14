@@ -53,24 +53,18 @@ var lineasResumen1 = resumen1.split('\n');
 // Datos de ejemplo (reemplazar con datos reales)
     const datosVenta = {
       detalle: [
-        { idVenta: 2, producto: resumen1.split('\n'), cantidad: resumen2.split('\n'), precioUnitario: 20, fechaVenta: '2023-10-26' },
+        { idVenta: 2, producto: resumen1, cantidad: resumen2, precioUnitario: 20, fechaVenta: '2023-10-26' },
       ]
     };
+		    
 
     // Llenar el detalle de venta
     const detalleVentaTabla = document.getElementById('detalleVenta');
 
-    datosVenta.detalle.forEach(venta => {
-
+       datosVenta.detalle.forEach(venta => {
       const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${venta.idVenta}</td>
-        <td>${venta.producto}</td>
-        <td>${venta.cantidad}</td>
-        <td>${venta.precioUnitario}</td>
-        <td>${venta.fechaVenta}</td>
-      `;
-      detalleVentaTabla.appendChild(row);});
+      row.innerHTML = venta;
+      document.getElementById('resumen1').appendChild(row);});
 };
 
         </script>
