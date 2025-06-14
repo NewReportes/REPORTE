@@ -43,11 +43,9 @@
 	    var lineasResumen1 = resumen1.split("\n");
 	    var lineasResumen2 = resumen2.split("\n");
 
-	    // Mapear cada línea a un elemento <p>
-    const parrafosHTML = lineas.map(linea => <p>resumen1</p>);
 
     // Unir los párrafos en una sola cadena HTML
-    const resultadoHTML = parrafosHTML.join("");
+    const resultadoHTML = resumen1.join("");
 
     return resultadoHTML;
   }
@@ -59,7 +57,7 @@
   const resumenHTML = convertirResumenAHTML(resumenOriginal);
 
   // Insertar el resultado en el elemento con id "resumen-html"
-  document.getElementById("resumen-html").innerHTML = resumenHTML;
+  document.getElementById("resumen1").innerHTML = resumenHTML;
 
 		
 
