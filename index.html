@@ -46,7 +46,7 @@
     const contenedor = document.getElementById("resumen1");
     contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar contenido
 
-    lineas.forEach(function(linea1) {
+    lineasResumen1.forEach(function(linea1) {
       const p = document.createElement("p");
       p.textContent = linea1; // Usa textContent para escapar automáticamente
       contenedor.appendChild(p);
