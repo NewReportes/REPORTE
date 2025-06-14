@@ -16,14 +16,6 @@
 	    var responsable = obtenerParametro('responsable');
             var resumen1 = obtenerParametro('resumen1');
 	    var resumen2 = obtenerParametro('resumen2');
-	    var resumen3 = obtenerParametro('resumen3');
-	    var resumen4 = obtenerParametro('resumen4');
-            var subtotal = obtenerParametro('subtotal');
-	    var totalneto = obtenerParametro('totalneto');
-	    var iva = obtenerParametro('iva');
-	    var descuento = obtenerParametro('descuento');
-            var total = obtenerParametro('total');
-            var formapago = obtenerParametro('formapago');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
 	    var lineasResumen1 = resumen1.split('\n');
@@ -34,12 +26,6 @@
                   document.getElementById('fecha').innerHTML = fecha;
 		document.getElementById('cantidad').innerHTML = cantidad;
 		document.getElementById('responsable').innerHTML = responsable;
-		document.getElementById('subtotal').innerHTML = subtotal;
-		document.getElementById('totalneto').innerHTML = totalneto;
-		document.getElementById('iva').innerHTML = iva;
-		document.getElementById('descuento').innerHTML = descuento;
-                document.getElementById('total').innerHTML = total;
-		document.getElementById('formapago').innerHTML = formapago;
 
 // Mostrar cada línea del resumen en un párrafo separado
 		    
@@ -74,16 +60,16 @@
     </table>
     <tr>
 	<p style="text-align: left; line-height: 0px;">RESPONSABLE:  <span style="text-align: left; line-height: 0px;" id="responsable"></span></p>	
-	<p style="font-size:13px; text-align: left;">RESUMEN GENERAL.</p>
+	<p style="font-size:16px; text-align: left;">RESUMEN GENERAL.</p>
     </tr>
 
  <!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
     <thead>
       <tr>
-	                <th class="cantidad">FECHA LEVANT</th>
-                        <th class="descripcion">CATEGORÍAS</th>
-                        <th class="preciounit" style="text-align: right;">DIF. +/- PLG.</th>
-                        <th class="precio" style="text-align: right;">% COLGATE</th>
+	                <th style="text-align: center;">FECHA LEVANT</th>
+                        <th style="text-align: center;">CATEGORÍAS</th>
+                        <th style="text-align: center;">DIF. +/- PLG.</th>
+                        <th style="text-align: center;">% COLGATE</th>
       </tr>
     </thead>
  </table>
