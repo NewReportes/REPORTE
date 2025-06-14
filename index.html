@@ -40,9 +40,30 @@
 	    var resumen2 = obtenerParametro('resumen2');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
-	    var lineasResumen1 = resumen1.splitlines();
-	    var lineasResumen2 = resumen2.splitlines();
-	
+	    var lineasResumen1 = resumen1.split("\n");
+	    var lineasResumen2 = resumen2.split("\n");
+
+	    // Mapear cada línea a un elemento <p>
+    const parrafosHTML = lineas.map(linea => `<p>${linea}</p>`);
+
+    // Unir los párrafos en una sola cadena HTML
+    const resultadoHTML = parrafosHTML.join("");
+
+    return resultadoHTML;
+  }
+
+  // Ejemplo de uso:
+  const resumenOriginal = resumen1;
+
+  // Convertir el resumen a HTML
+  const resumenHTML = convertirResumenAHTML(resumenOriginal);
+
+  // Insertar el resultado en el elemento con id "resumen-html"
+  document.getElementById("resumen-html").innerHTML = resumenHTML;
+
+		
+
+		
 // Escribir la información en el documento HTML
             window.onload = function() {
                   document.getElementById('fecha').innerHTML = fecha;
@@ -50,11 +71,11 @@
 		document.getElementById('responsable').innerHTML = responsable;
 
 // Mostrar cada línea del resumen en un párrafo separado
-		   lineasResumen1.forEach(function(linea1) {
-                   var parrafo = document.createElement('tr');
-		   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1;
-                   document.getElementById('resumen1').appendChild(parrafo);});
+		   //lineasResumen1.forEach(function(linea1) {
+                  // var parrafo = document.createElement('tr');
+		  // parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                   //parrafo.innerHTML = linea1;
+                   //document.getElementById('resumen1').appendChild(parrafo);});
 
 		    lineasResumen2.forEach(function(linea2) {
                     var parrafo = document.createElement('tr');
@@ -94,7 +115,7 @@
 
     <tbody>
    	    <tr>
- 			<td id="resumen1"></td>
+ 			<td id="resumen-html"></td>
 		        <td id="resumen2"></td>
 	    </tr>
     </tbody>
