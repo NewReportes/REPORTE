@@ -40,8 +40,8 @@
 	    var resumen2 = obtenerParametro('resumen2');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
-	    var lineasResumen1 = resumen1.split('\n');
-	    var lineasResumen2 = resumen2.split('\n');
+	    var lineasResumen1 = resumen1.splitlines();
+	    var lineasResumen2 = resumen2.splitlines();
 	
 // Escribir la información en el documento HTML
             window.onload = function() {
