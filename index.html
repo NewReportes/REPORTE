@@ -43,16 +43,15 @@
 	    var lineasResumen1 = resumen1.split("\n");
 	    var lineasResumen2 = resumen2.split("\n");
 
-  function convertirResumenAHTML(resumen1) {
     const contenedor = document.getElementById("resumen1");
     contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar contenido
 
-    lineas.forEach(linea => {
+    lineas.forEach(function(linea1) {
       const p = document.createElement("p");
-      p.textContent = linea; // Usa textContent para escapar automáticamente
+      p.textContent = linea1; // Usa textContent para escapar automáticamente
       contenedor.appendChild(p);
     });
-  };
+
 
 	
 		
