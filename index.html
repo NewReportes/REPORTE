@@ -43,24 +43,27 @@
 	    var lineasResumen1 = resumen1.split("\n");
 	    var lineasResumen2 = resumen2.split("\n");
 
+  function convertirResumenAHTML(resumen) {
+    const lineas = resumen.split("\n");
+    const contenedor = document.getElementById("resumen1");
+    contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar contenido
 
-    // Unir los párrafos en una sola cadena HTML
-    const resultadoHTML = resumen1.join("");
-
-    return resultadoHTML;
+    lineas.forEach(linea => {
+      const p = document.createElement("p");
+      p.textContent = linea; // Usa textContent para escapar automáticamente
+      contenedor.appendChild(p);
+    });
   }
 
   // Ejemplo de uso:
-  const resumenOriginal = resumen1;
+  const resumenOriginal = `Esta es la primera línea del resumen.
+Esta es la segunda línea del resumen, que es un poco más larga.
+Y esta es la tercera y última línea. <script>alert('XSS'); // Intentamos un ataque XSS
 
   // Convertir el resumen a HTML
-  const resumenHTML = convertirResumenAHTML(resumenOriginal);
+  convertirResumenAHTML(resumenOriginal);
 
-  // Insertar el resultado en el elemento con id "resumen-html"
-  document.getElementById("resumen1").innerHTML = resumenHTML;
-
-		
-
+	
 		
 // Escribir la información en el documento HTML
             window.onload = function() {
@@ -113,7 +116,7 @@
 
     <tbody>
    	    <tr>
- 			<td id="resumen1"></td>
+ 			<td id="resumenOriginal"></td>
 		        <td id="resumen2"></td>
 	    </tr>
     </tbody>
