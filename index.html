@@ -50,14 +50,13 @@
 		document.getElementById('cantidad').innerHTML = cantidad;
 		document.getElementById('responsable').innerHTML = responsable;
 		document.getElementById('resumen1').innerHTML = resumen1;
-		document.getElementById('resumen2').appendChild(resumen2);
+		document.getElementById('resumen2').innerHTML = resumen2;
 		    
 		    
 // Mostrar cada línea del resumen en un párrafo separado
 	    
 		   lineasResumen1.forEach(function(linea1) {
                    var parrafo = document.createElement('tr');
-		   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                    parrafo.innerHTML = linea1;
                    document.getElementById('resumen1').appendChild(parrafo);});
 
