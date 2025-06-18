@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<style>
-    body { font-family: Arial; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f4f4f4; }
-    .btn { background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
-  </style>
-	
+
 	<script>
 // Función para obtener parámetros de la URl
             function obtenerParametro(nombre) {
@@ -100,25 +93,28 @@
 	<p style="text-align: left; line-height: 0px;">VENDEDOR:  <span style="text-align: left; line-height: 0px;" id="vendedor"></span></p>	
 	<p style="font-size:13px; text-align: left;">RESUMEN GENERAL.</p>
     </tr>
-<table>
-        <thead>
+<!--revisar cod--> <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                <thead>
                     <tr>
-                        <th>CANT</th>
-                        <th>DESCRIPCION</th>
-                        <th>V. UNIT</th>
-                        <th>TOTAL</th>
+                        <th class="cantidad">CANT</th>
+                        <th class="descripcion">DESCRIPCION</th>
+                        <th class="preciounit" style="text-align: right;">V. UNIT</th>
+                        <th class="precio" style="text-align: right;">TOTAL</th>
                     </tr>
-	</thead>
-	<tbody>
+                </thead></table>
+<!--va detalle...-->	
+         <table width="100%" border="0" cellpadding="0" cellspacing="0";>
+
+  <tbody>
 	  <tr>
-		        <td id="resumen1"</td>
-                        <td id="resumen2"</td>
-                        <td id="resumen3"</td>
-                        <td id="resumen4"</td>
+                        <td class="cantidad" style="text-align: left;" id="resumen1"</td>
+                        <td class="descripcion" style="text-align: left;" id="resumen2"</td>
+                        <td class="preciounit" style="text-align: left;" id="resumen3"</td>
+                        <td class="precio" style="text-align: left;" id="resumen4"</td>
 	 </tr>
   </tbody>
-</table>
-		<br>
+    
+	</table><br>
 	
  </div>
     </body>
