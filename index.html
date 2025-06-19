@@ -1,122 +1,23 @@
-<!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<h1>Detalles de la Venta</h1>
+<p>Responble: $[responsable]</p>
+<p>Fecha: $[Fecha]</p>
 
-<style>
-    body { font-family: Arial; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 0px;}
-    th, td { border: 1px solid #ccc; padding: 2px; text-align: left;} 
-    th { background-color: #f4f4f4; }
-    .btn { background-color: #007bff; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; }
-  </style>
-	<script>
-// Función para obtener parámetros de la URl
-            function obtenerParametro(nombre) {
-                nombre = nombre.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + nombre + '=([^&#]*)');
-                var resultados = regex.exec(location.search);
-                return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ''));
-            }
-        
-// Obtener los parámetros de la URL
-            var id_boleta = obtenerParametro('id_boleta');
-            var fecha = obtenerParametro('fecha');
-	    var hora = obtenerParametro('hora');
-	    var vendedor = obtenerParametro('vendedor');
-            var resumen1 = obtenerParametro('resumen1');
-	    var resumen2 = obtenerParametro('resumen2');
-	    var resumen3 = obtenerParametro('resumen3');
-	    var resumen4 = obtenerParametro('resumen4');
-            //var subtotal = obtenerParametro('subtotal');
-	    //var totalneto = obtenerParametro('totalneto');
-	    //var iva = obtenerParametro('iva');
-	    //var descuento = obtenerParametro('descuento');
-            //var total = obtenerParametro('total');
-	
-// Convertir la cadena resumen en un array separado por saltos de línea
-	   var lineasResumen1 = resumen1.split('\n');
-	   var lineasResumen2 = resumen2.split('\n');
-           var lineasResumen3 = resumen3.split('\n');
-	   var lineasResumen4 = resumen4.split('\n');
-	
-// Escribir la información en el documento HTML
-            window.onload = function() {
-                document.getElementById('id_boleta').innerHTML = id_boleta;
-                document.getElementById('fecha').innerHTML = fecha;
-		document.getElementById('hora').innerHTML = hora;
-		document.getElementById('vendedor').innerHTML = vendedor;
-		//document.getElementById('subtotal').innerHTML = subtotal;
-		//document.getElementById('totalneto').innerHTML = totalneto;
-		//document.getElementById('iva').innerHTML = iva;
-		//document.getElementById('descuento').innerHTML = descuento;
-                //document.getElementById('total').innerHTML = total;
-		    
- // Mostrar cada línea del resumen en un párrafo separado
-
-		    
-		  resumen1.forEach(function(linea1) {
-                   var parrafo = document.createElement('p');
-                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1;
-                    document.getElementById('resumen1').appendChild(parrafo);});
-
-		    resumen2.forEach(function(linea2) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea2;
-		     document.getElementById('resumen2').appendChild(parrafo);});
-			    
-		    resumen3.forEach(function(linea3) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea3;
-                     document.getElementById('resumen3').appendChild(parrafo);});
-		    
-		    resumen4.forEach(function(linea4) {
-                    var parrafo = document.createElement('p');
-                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                    parrafo.innerHTML = linea4;
-                     document.getElementById('resumen4').appendChild(parrafo);});
-            };
-        </script>
-    </head>
-<body>
-<title>Imprime Encuesta</title>
-
-           <b><p class="centrado" style="font-size:16px; margin-top:0; margin-bottom:0;">AQUÍ NOMBRE FICTICIO</p></b>
-	    
-	<table>
-	  <tr>  
-		  <th class="descripcion" style="text-align: left;">BOLETA N°:  </th><td class="preciounit" style="text-align: left;" id="id_boleta"></td> 
-                  <th class="descripcion" style="text-align: left;">FECHA:  </th><td class="descripcion" style="text-align: left;" id="fecha"></td>
-                  <th class="descripcion" style="text-align: right;">HORA:  </th><td class="descripcion" style="text-align: right;" id="hora"></td>	  
-	  </tr>
-    </table>
-    <tr>
-	<p style="text-align: left; line-height: 0px;">VENDEDOR:  <span style="text-align: left; line-height: 0px;" id="vendedor"></span></p><br>	
-	<b><p class="centrado" style="font-size:13px; margin-top:0; margin-bottom:0;">RESUMEN SHARE MERKAT</p></b>
-    </tr>
 <table>
-                <thead>
-                    <tr>
-                        <th>CANT</th>
-                        <th>DESCRIPCION</th>
-                        <th>V. UNIT</th>
-                        <th>TOTAL</th>
-                    </tr>
-                </thead>	
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
   <tbody>
-	  <tr>
-                        <td style="border-top: 1px solid #666; border-botton: 1px solid #666;"><span id="resumen1"></span></td>
-                        <td style="border-top: 1px solid #666; border-botton: 1px solid #666;"><span id="resumen2"></span></td>
-                        <td style="border-top: 1px solid #666; border-botton: 1px solid #666;"><span id="resumen3"></span></td>
-                        <td style="border-top: 1px solid #666; border-botton: 1px solid #666;"><span id="resumen4"></span></td>
-	 </tr>
+    {
+      <<[Related Detalle Ventas]:[Producto]>>
+      <tr>
+        <td>$[Producto]</td>
+        <td>$[Cantidad]</td>
+        <td>$[Precio]</td>
+      </tr>
+    }
   </tbody>
-
-	</table>
-	<br>
-  
-    </body>
-<button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
-
-</html>
+</table>
