@@ -2,7 +2,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
-    body { font-family: Arial; padding: 10px; }
+    body { font-family: Arial; padding: 15px; }
     table { width: 100%; border-collapse: collapse; margin-top: 0px;}
     th, td { border: 1px solid #ccc; padding: 2px; text-align: left;} 
     th { background-color: #f4f4f4; }
@@ -33,10 +33,10 @@
             //var total = obtenerParametro('total');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
-	   var lineasResumen1 = resumen1.split('\n');
-	   var lineasResumen2 = resumen2.split('\n');
-           var lineasResumen3 = resumen3.split('\n');
-	   var lineasResumen4 = resumen4.split('\n');
+	   var lineasResumen1 = resumen1.split('/\r?\n/');
+	   var lineasResumen2 = resumen2.split('/\r?\n/');
+           var lineasResumen3 = resumen3.split('/\r?\n/');
+	   var lineasResumen4 = resumen4.split('/\r?\n/');
 	
 // Escribir la información en el documento HTML
             window.onload = function() {
@@ -51,9 +51,8 @@
                 //document.getElementById('total').innerHTML = total;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
-
 		    
-		  lineasResumen1.forEach(function(linea1) {
+		  lineasResumen1.forEach(function(linea1 => `<div>${linea}</div>`).join('<br>'); {
                    var parrafo = document.createElement('p');
                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                    parrafo.innerHTML = linea1;
