@@ -19,11 +19,11 @@
 	    var resumen2 = obtenerParametro('resumen2');
 	    var resumen3 = obtenerParametro('resumen3');
 	    var resumen4 = obtenerParametro('resumen4');
-            var subtotal = obtenerParametro('subtotal');
-	    var totalneto = obtenerParametro('totalneto');
-	    var iva = obtenerParametro('iva');
-	    var descuento = obtenerParametro('descuento');
-            var total = obtenerParametro('total');
+            //var subtotal = obtenerParametro('subtotal');
+	    //var totalneto = obtenerParametro('totalneto');
+	    //var iva = obtenerParametro('iva');
+	    //var descuento = obtenerParametro('descuento');
+            //var total = obtenerParametro('total');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
 	    var lineasResumen1 = resumen1.split('\n');
@@ -37,11 +37,11 @@
                 document.getElementById('fecha').innerHTML = fecha;
 		document.getElementById('hora').innerHTML = hora;
 		document.getElementById('vendedor').innerHTML = vendedor;
-		document.getElementById('subtotal').innerHTML = subtotal;
-		document.getElementById('totalneto').innerHTML = totalneto;
-		document.getElementById('iva').innerHTML = iva;
-		document.getElementById('descuento').innerHTML = descuento;
-                document.getElementById('total').innerHTML = total;
+		//document.getElementById('subtotal').innerHTML = subtotal;
+		//document.getElementById('totalneto').innerHTML = totalneto;
+		//document.getElementById('iva').innerHTML = iva;
+		//document.getElementById('descuento').innerHTML = descuento;
+                //document.getElementById('total').innerHTML = total;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
 
@@ -111,30 +111,7 @@
                         <td class="precio" style="text-align: left;" id="resumen4"</td>
 	 </tr>
   </tbody>
-          <table>
-      <thead>
-                   <tr>
-                        <td class="descripcion" style="text-align: right;"><b>SUBTOTAL: $</b></td>
-                        <td class="precio" style="text-align: right;" id="subtotal"</td>
-                    </tr>
-          <tr>
-                        <td class="descripcion" style="text-align: right;"><b>TOTAL NETO: $</b></td>
-                        <td class="precio" style="text-align: right;" id="totalneto"</td>
-          </tr>
-                   <tr>
-                        <td class="descripcion" style="text-align: right;"><b>IVA (19%): $</b></td>
-                        <td class="precio" style="text-align: right;" id="iva"</td>
-                    </tr>
-                   <tr>
-                        <td class="descripcion" style="text-align: right;"><b>DESCUENTOS: $</b></td>
-                        <td class="precio" style="text-align: right;" id="descuento"</td>
-                    </tr>
-                   <tr>
-                        <td class="descripcion" style="text-align: right;"><b>TOTAL: $</b></td>
-                        <td class="precio" style="text-align: right;" id="total"</td>
-                    </tr>
-      </thead>
-  </table>
+
 	</table><br>
 
 
