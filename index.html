@@ -60,7 +60,7 @@
 
 		    lineasResumen2.forEach(function(linea2) {
                     var parrafo = document.createElement('p');
-                    //parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
+                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
                     parrafo.innerHTML = linea2;
 		    document.getElementById('resumen2').appendChild(parrafo);});
 			    
@@ -92,7 +92,7 @@
     </table>
     <tr>
 	<p style="text-align: left; line-height: 0px;">VENDEDOR:  <span style="text-align: left; line-height: 0px;" id="vendedor"></span></p><br>	
-	<p class="centrado" style="font-size:13px; margin-top:0; margin-bottom:0;">RESUMEN SHARE MERKAT</p>
+	<b><p class="centrado" style="font-size:13px; margin-top:0; margin-bottom:0;">RESUMEN SHARE MERKAT</p></b>
     </tr>
 <table>
                 <thead>
@@ -112,7 +112,8 @@
 	 </tr>
   </tbody>
 
-	</table><br>
+	</table>
+	<br>
   
     </body>
 <button onclick="window.print();" class="noPrint">IMPRIMIR TICKET DE VENTA</button>
