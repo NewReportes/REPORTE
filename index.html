@@ -33,10 +33,10 @@
             //var total = obtenerParametro('total');
 	
 // Convertir la cadena resumen en un array separado por saltos de línea
-	   var lineasResumen1 = resumen1.split('/\r?\n/');
-	   var lineasResumen2 = resumen2.split('/\r?\n/');
-           var lineasResumen3 = resumen3.split('/\r?\n/');
-	   var lineasResumen4 = resumen4.split('/\r?\n/');
+	   var lineasResumen1 = resumen1.split(/\r?\n/);
+	   var lineasResumen2 = resumen2.split(/\r?\n/);
+           var lineasResumen3 = resumen3.split(/\r?\n/);
+	   var lineasResumen4 = resumen4.split(/\r?\n/);
 	
 // Escribir la información en el documento HTML
             window.onload = function() {
