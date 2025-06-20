@@ -51,9 +51,9 @@
                 //document.getElementById('total').innerHTML = total;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
-        // let data = ["Ram", "Shyam", "Sita", "Gita"];
+        let data = resumen1;
         let list = document.getElementById("resumen1");
-        for (i = 0; i < list.length; ++i) {
+        for (i = 0; i < data.length; ++i) {
             let li = document.createElement('li');
             li.innerText = data[i];
             list.appendChild(li);
