@@ -5,7 +5,6 @@
     body { font-family: Arial; padding: 15px; }
     table { width: 100%; border-collapse: collapse; margin-top: 0px;}
     th, td { border: 1px solid #ccc; padding: 2px; text-align: left;} 
-	td {border-top:1px solid #000;}
     th { background-color: #f4f4f4; }
     .btn { background-color: #007bff; color: white; padding: 0px 5px; text-decoration: none; border-radius: 5px; }
   </style>
@@ -56,7 +55,7 @@
 		   lineasResumen1.forEach(function(linea1) {
                    var parrafo = document.createElement('p');
                    parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1; 
+                   parrafo.innerHTML = linea1; border:1px solid #000;
                     document.getElementById('resumen1').appendChild(parrafo);});
 
 		    lineasResumen2.forEach(function(linea2) {
@@ -106,10 +105,10 @@
                 </thead>	
   <tbody>
 	  <tr>
-                        <td style="border-top: 1px solid #666;" id="resumen1"></td>
-                        <td style="border-top: 1px solid #666;" id="resumen2"></td>
-                        <td style="border-top: 1px solid #666;" id="resumen3"></td>
-                        <td style="border-top: 1px solid #666;" id="resumen4"></td>
+                        <td style="border: 1px solid #666;" id="resumen1"></td>
+                        <td style="border: 1px solid #666;" id="resumen2"></td>
+                        <td style="border: 1px solid #666;" id="resumen3"></td>
+                        <td style="border: 1px solid #666;" id="resumen4"></td>
 	 </tr>
   </tbody>
 
