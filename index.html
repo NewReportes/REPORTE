@@ -51,12 +51,14 @@
                 //document.getElementById('total').innerHTML = total;
 		    
  // Mostrar cada línea del resumen en un párrafo separado
-		    
-		  lineasResumen1.forEach(function(linea1) {
-                   var parrafo = document.createElement('p');
-                   parrafo.classList.add('fs-5', 'text-uppercase', 'text-start');
-                   parrafo.innerHTML = linea1; 
-                    document.getElementById('resumen1').appendChild(parrafo);});
+        // let data = ["Ram", "Shyam", "Sita", "Gita"];
+        let list = document.getElementById("resumen1");
+        for (i = 0; i < list.length; ++i) {
+            let li = document.createElement('li');
+            li.innerText = data[i];
+            list.appendChild(li);
+        }
+
 
 		    lineasResumen2.forEach(function(linea2) {
                     var parrafo = document.createElement('p');
